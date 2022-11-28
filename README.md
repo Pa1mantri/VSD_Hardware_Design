@@ -6,7 +6,7 @@ Environment: Windows-11 and Ubuntu-22.04
 ## Tools: Yosys
 
 Installation Flow:
-'''
+```
 $ git clone https://github.com/YosysHQ/yosys.git  
 $ cd yosys  
 $ sudo apt install make (If make is not installed please install it)   
@@ -16,4 +16,4 @@ $ sudo apt-get install build-essential clang bison flex \
     libboost-python-dev libboost-filesystem-dev zlib1g-dev  
 $ make   
 $ sudo make install  
-'''
+```
