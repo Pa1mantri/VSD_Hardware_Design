@@ -40,8 +40,10 @@ $ cd build
 $ cmake ..  
 $ make  
 $ sudo make install  
-```
+```  
+
 Image:
+
 <img width="496" alt="STA" src="https://user-images.githubusercontent.com/114488271/204252666-51347fe2-9831-4603-a0ec-2fe5a72cfd1c.png">   
 
 
@@ -51,7 +53,7 @@ Installation source:
 (https://sourceforge.net/projects/ngspice/files/ng-spice-rework/38/ )
 
 Installation guide:
-(https://github.com/ngspice/ngspice/blob/master/INSTALL ) #Install from tarball
+(https://github.com/ngspice/ngspice/blob/master/INSTALL)  #Install from tarball
 
 After downloading the tarball from https://sourceforge.net/projects/ngspice/files/ to a local directory, unpack it using:  
 
@@ -65,8 +67,11 @@ $ ../configure  --with-x --with-readline=yes --disable-debug
 $ make  
 $ sudo make install  
 
-```
-Image:
+```  
+
+Image:  
+<img width="489" alt="ngspice" src="https://user-images.githubusercontent.com/114488271/204254212-423b71b1-5184-4bac-b709-2fbef1fcd3e7.png">  
+
 
 
 
