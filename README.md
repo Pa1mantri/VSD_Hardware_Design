@@ -17,7 +17,8 @@ $ sudo apt-get install build-essential clang bison flex \
 $ make   
 $ sudo make install  
 ```
-<img width="408" alt="yosys" src="https://user-images.githubusercontent.com/114488271/204250545-7b7cf48e-fc05-495c-b88c-94a5403b079c.png">  
+<img width="408" alt="yosys" src="https://user-images.githubusercontent.com/114488271/204250545-7b7cf48e-fc05-495c-b88c-94a5403b079c.png">    
+
 
 ## Tool: **OpenSTA**  
 
@@ -41,9 +42,10 @@ $ make
 $ sudo make install  
 ```
 Image:
-<img width="496" alt="STA" src="https://user-images.githubusercontent.com/114488271/204252666-51347fe2-9831-4603-a0ec-2fe5a72cfd1c.png">  
+<img width="496" alt="STA" src="https://user-images.githubusercontent.com/114488271/204252666-51347fe2-9831-4603-a0ec-2fe5a72cfd1c.png">   
 
-##Tool : **ngspice**
+
+## Tool : **ngspice**
 
 Installation source:
 (https://sourceforge.net/projects/ngspice/files/ng-spice-rework/38/ )
