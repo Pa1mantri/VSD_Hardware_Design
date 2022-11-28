@@ -17,3 +17,4 @@ $ sudo apt-get install build-essential clang bison flex \
 $ make   
 $ sudo make install  
 ```
+<img width="408" alt="yosys" src="https://user-images.githubusercontent.com/114488271/204250545-7b7cf48e-fc05-495c-b88c-94a5403b079c.png">
