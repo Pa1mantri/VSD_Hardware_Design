@@ -1,6 +1,6 @@
 # VSD Hardware Design Flow
 -------------------------------------------------------
-# Day 0
+## Day-0 **Tool Installations**
 -------------------------------------------------------
 Environment: Windows-11 and Ubuntu-22.04
 ## Tool: **Yosys**
@@ -71,6 +71,16 @@ $ sudo make install
 
 Image:  
 <img width="489" alt="ngspice" src="https://user-images.githubusercontent.com/114488271/204254212-423b71b1-5184-4bac-b709-2fbef1fcd3e7.png">  
+
+## Day -1 ** Introduction to verilog RTL design and Synthesis
+-------------------------------------------------------------
+## Introduction to opensource simulator iverilog
+-------------------------------------------------------------
+*Simulator* : It is a tool for checking whether our RTL design meets the required specifications or not. Icarus Verilog is a simulator used for simulation and synthesis of RTL designs written in verilog which is one of the many hardware description languages.
+
+*Design* : It is the code or set of verilog codes that has the intended functionality to meet the required specifications.
+
+*Testbench* : Testbench is a setup which is used to apply stimulus (test_vectors) to the design to check it's functionality.It tests whether the design provides the output that matches the specifications.The RTL Design gets instantiated in the testbench.
 
 
 
