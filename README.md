@@ -146,8 +146,10 @@ iverilog good_mux.v tb_good_mux.v
  
  ## Introduction to yosys and Logic Synthesis
  
-**Synthesizer** :It is a tool used for the conversion of an RTL to a netlist.
-**Netlist**: It is a representation of the input design to yosys in terms of standard cells present in the library. Yosys is the Synthesizer tool that we will be using. Diiferent levels of abstraction and synthesis.
+**Synthesizer** :It is a tool used for the conversion of an RTL to a netlist.  
+**Netlist**: It is a representation of the input design to yosys in terms of standard cells present in the library. Yosys is the Synthesizer tool that we will be using. Diiferent levels of abstraction and synthesis.  
+
+<img width="935" alt="Screenshot_20221129_072106" src="https://user-images.githubusercontent.com/114488271/204547621-488f1822-58e7-42f5-8c89-2d999f901d50.png">
 
 * read_verilog : It is used to read the design
 * read_liberty : It is used to read the library .lib
