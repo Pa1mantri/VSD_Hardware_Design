@@ -72,7 +72,7 @@ $ sudo make install
 Image:  
 <img width="489" alt="ngspice" src="https://user-images.githubusercontent.com/114488271/204254212-423b71b1-5184-4bac-b709-2fbef1fcd3e7.png">  
 
-## Day -1 ** Introduction to verilog RTL design and Synthesis
+## Day -1 ** Introduction to verilog RTL design and Synthesis**
 -------------------------------------------------------------
 ## Introduction to opensource simulator iverilog
 -------------------------------------------------------------
@@ -82,8 +82,33 @@ Image:
 
 **Testbench** : Testbench is a setup which is used to apply stimulus (test_vectors) to the design to check it's functionality.It tests whether the design provides the output that matches the specifications.The RTL Design gets instantiated in the testbench.
 
-!(<img width="877" alt="Screenshot_20221129_063956" src="https://user-images.githubusercontent.com/114488271/204537955-6f3d3b5c-dc9f-46a4-b1a0-558321bb008e.png">)
+<img width="877" alt="Screenshot_20221129_063956" src="https://user-images.githubusercontent.com/114488271/204537955-6f3d3b5c-dc9f-46a4-b1a0-558321bb008e.png">
 
+**iverilog Based Design Flow**
+
+1.The iverilog simulator takes RTL design and Testbench as inputs.  
+2.It produces a VCD file(Value change dump format) as output. Only changes in the input are dumped to changes in the output.  
+3.We use Gtkwave to see these output changes graphically.
+
+**Labs using iverilog and gtkwave**
+---
+```
+mkdir vsd  
+cd vsd  
+git clone https://github.com/kunalg123/vsdflow.git  
+mkdir vlsi
+cd vlsi
+git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git  
+cd sky130RTLDesignAndSynthesisWorkshop  
+cd my_lib  
+cd lib  
+cd ..
+cd verilog_model
+cd..
+cd..
+cd verilog_files
+```
+Below screenshot shows the above directory structure inside the vsd upto my_lib directories that was set up through the terminal.
 
 
 
