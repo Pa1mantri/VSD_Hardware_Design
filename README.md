@@ -76,11 +76,13 @@ Image:
 -------------------------------------------------------------
 ## Introduction to opensource simulator iverilog
 -------------------------------------------------------------
-*Simulator* : It is a tool for checking whether our RTL design meets the required specifications or not. Icarus Verilog is a simulator used for simulation and synthesis of RTL designs written in verilog which is one of the many hardware description languages.
+**Simulator** : It is a tool for checking whether our RTL design meets the required specifications or not. Icarus Verilog is a simulator used for simulation and synthesis of RTL designs written in verilog which is one of the many hardware description languages.
 
-*Design* : It is the code or set of verilog codes that has the intended functionality to meet the required specifications.
+**Design** : It is the code or set of verilog codes that has the intended functionality to meet the required specifications.
 
-*Testbench* : Testbench is a setup which is used to apply stimulus (test_vectors) to the design to check it's functionality.It tests whether the design provides the output that matches the specifications.The RTL Design gets instantiated in the testbench.
+**Testbench** : Testbench is a setup which is used to apply stimulus (test_vectors) to the design to check it's functionality.It tests whether the design provides the output that matches the specifications.The RTL Design gets instantiated in the testbench.
+
+!(<img width="877" alt="Screenshot_20221129_063956" src="https://user-images.githubusercontent.com/114488271/204537955-6f3d3b5c-dc9f-46a4-b1a0-558321bb008e.png">)
 
 
 
