@@ -72,7 +72,7 @@ $ sudo make install
 Image:  
 <img width="489" alt="ngspice" src="https://user-images.githubusercontent.com/114488271/204254212-423b71b1-5184-4bac-b709-2fbef1fcd3e7.png">  
 
-## Day -1 ** Introduction to verilog RTL design and Synthesis**
+## Day -1  Introduction to verilog RTL design and Synthesis
 -------------------------------------------------------------
 ## Introduction to opensource simulator iverilog
 -------------------------------------------------------------
@@ -119,11 +119,30 @@ Below screenshot shows the list of verilog files. Each verilog design file has a
 
 Since the environment is now set up,we try to simulate a verilog code named good_mux in one of our verilog_files with the help of it's test bench and gtkwave. The steps are mentioned below:
 
-    1.We simulate the RTL design and assosciated test bench .
-    ```
-    iverilog good_mux.v tb_good_mux.v
-    ```
+We simulate the RTL design and assosciated test bench.
+
+```
+iverilog good_mux.v tb_good_mux.v
+```  
     
-    
+ As a result of the above , a. file is created which can be seen in the list of verilog files.
+
+ <img width="912" alt="iverilog-output" src="https://user-images.githubusercontent.com/114488271/204541993-865bb4c8-8dba-45f0-be1c-0f8730d9ac4a.png">  
+ 
+ We dump the output into a vcd file.
+ ```
+ ./a.out  
+ ```
+ The following command invokes gtkwave window where in we can see all our outputs.  
+ ```
+ gtkwave tb_good_mux_vcd
+ ```
+ We can also view our Verilog RTL design and testbench code using  
+ ```
+ gvim tb_good_mux.v -o good_mux.v
+
+
+
+
 
 
