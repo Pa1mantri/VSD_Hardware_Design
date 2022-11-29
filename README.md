@@ -125,21 +125,34 @@ We simulate the RTL design and assosciated test bench.
 iverilog good_mux.v tb_good_mux.v
 ```  
     
- As a result of the above , a. file is created which can be seen in the list of verilog files.
+ As a result of the above , a. file is created which can be seen in the list of verilog files and we dump the output into a vcd file using
+  ```
+ ./a.out  
+ ```
 
  <img width="912" alt="iverilog-output" src="https://user-images.githubusercontent.com/114488271/204541993-865bb4c8-8dba-45f0-be1c-0f8730d9ac4a.png">  
  
- We dump the output into a vcd file.
- ```
- ./a.out  
- ```
  The following command invokes gtkwave window where in we can see all our outputs.  
  ```
  gtkwave tb_good_mux_vcd
- ```
+ ```  
+ <img width="863" alt="gtkwave mux op" src="https://user-images.githubusercontent.com/114488271/204545214-f32a6fb3-76bd-4329-ad4c-9df9e31a636a.png">
+
  We can also view our Verilog RTL design and testbench code using  
  ```
- gvim tb_good_mux.v -o good_mux.v
+ gvim tb_good_mux.v -o good_mux.v  
+ ```
+ <img width="958" alt="mux code n tb" src="https://user-images.githubusercontent.com/114488271/204545185-254d6e7e-fcac-4e29-9390-392feea36609.png">
+ 
+ ## Introduction to yosys and Logic Synthesis
+ 
+**Synthesizer** :It is a tool used for the conversion of an RTL to a netlist.
+**Netlist**: It is a representation of the input design to yosys in terms of standard cells present in the library. Yosys is the Synthesizer tool that we will be using. Diiferent levels of abstraction and synthesis.
+
+* read_verilog : It is used to read the design
+* read_liberty : It is used to read the library .lib
+* write_verilog : It is used to write out the netlist
+
 
 
 
