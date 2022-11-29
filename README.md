@@ -110,5 +110,20 @@ cd verilog_files
 ```
 Below screenshot shows the above directory structure inside the vsd upto my_lib directories that was set up through the terminal.
 
+<img width="740" alt="directory structure-1" src="https://user-images.githubusercontent.com/114488271/204541106-cd06ff7f-4562-436c-9347-b2432fb9e3b4.png">
+<img width="715" alt="directory structure-2" src="https://user-images.githubusercontent.com/114488271/204541123-f9fed187-0abe-4a52-8369-3072f8db30b6.png">
+
+Below screenshot shows the list of verilog files. Each verilog design file has an assosciated test bench file.
+
+<img width="898" alt="directory structure-3" src="https://user-images.githubusercontent.com/114488271/204541098-2df364e2-1a0b-45f5-8d1e-a2a5a3b0cbdb.png">
+
+Since the environment is now set up,we try to simulate a verilog code named good_mux in one of our verilog_files with the help of it's test bench and gtkwave. The steps are mentioned below:
+
+    1.We simulate the RTL design and assosciated test bench .
+    ```
+    iverilog good_mux.v tb_good_mux.v
+    ```
+    
+    
 
 
