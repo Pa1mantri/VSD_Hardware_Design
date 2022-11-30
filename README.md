@@ -155,6 +155,38 @@ iverilog good_mux.v tb_good_mux.v
 * read_liberty : It is used to read the library .lib
 * write_verilog : It is used to write out the netlist
 
+##Labs using yosys and sky130 PDKs
+---
+commands to synthesise an RTL code(good_mux) are:
+```
+yosys  
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+read_verilog good_mux.v  
+synth -top good_mux  
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+show  
+```
+<img width="563" alt="yosys-2" src="https://user-images.githubusercontent.com/114488271/204778287-dd117f7e-512f-4d14-99e5-d7810f8a8490.png">
+
+Note:ABC is the command that converts our RTL file into a gate .What gate it has linked to, that gate is specified in the library with the path ../my_lib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib .The logic of good mux will be realised through standard cells present in the library of the mentioned path. The execution of ABC command gives us a report of the number of input and the output signals of our standard cell.
+
+<img width="403" alt="yosys-3" src="https://user-images.githubusercontent.com/114488271/204778307-ccb7ea88-4baa-42be-87da-2fc000327154.png">
+It also specifies the type and number of cells in a synthesis of RTL design
+<img width="544" alt="Screenshot_20221129_020509" src="https://user-images.githubusercontent.com/114488271/204778604-b59fa46e-0e8a-4fe5-aa73-bec13ae7b034.png">
+<img width="930" alt="Screenshot_20221129_020539" src="https://user-images.githubusercontent.com/114488271/204778222-2fe73a15-2b0b-40e5-8606-6a89ee9309e6.png">
+
+### Commands to write the netlist
+```
+write_verilog -noattr good_mux_netlist.v
+!gvim good_mux_netlist.v
+```  
+<img width="612" alt="Screenshot_20221129_020912" src="https://user-images.githubusercontent.com/114488271/204778256-c3cf8dbe-4854-42ce-9876-0813357036e4.png">
+
+
+
+
+
+
 
 
 
