@@ -182,6 +182,18 @@ write_verilog -noattr good_mux_netlist.v
 ```  
 <img width="612" alt="Screenshot_20221129_020912" src="https://user-images.githubusercontent.com/114488271/204778256-c3cf8dbe-4854-42ce-9876-0813357036e4.png">
 
+-------------------------
+
+## Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles
+--  
+### Introduction to Timing.lib
+--
+The library that is said to have a collection of all the standard cells along with their different flavors. We begin by understanding the name of the library. To look into the library,we use the gvim command
+```
+gvim ../lib/SKY130_fd_sc_hd__tt_025C_1v80.lib
+```
+
+
 
 
 
