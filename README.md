@@ -185,13 +185,34 @@ write_verilog -noattr good_mux_netlist.v
 -------------------------
 
 ## Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles
---  
+---- 
 ### Introduction to Timing.lib
---
-The library that is said to have a collection of all the standard cells along with their different flavors. We begin by understanding the name of the library. To look into the library,we use the gvim command
+----
+The library that is said to have a collection of all the standard cells along with their different flavors. We begin by understanding the name of the library. To look into the library,we use the gvim command  
+
 ```
 gvim ../lib/SKY130_fd_sc_hd__tt_025C_1v80.lib
-```
+```  
+<img width="895" alt="Screenshot_20221201_051054" src="https://user-images.githubusercontent.com/114488271/205282702-9e124774-54fa-4576-be04-3b13b8e6cc1f.png">
+<img width="731" alt="sub-module synthesis" src="https://user-images.githubusercontent.com/114488271/205282719-8bec0ab3-3778-42d0-b0b9-f6c27d265b42.png">
+<img width="809" alt="sync_res" src="https://user-images.githubusercontent.com/114488271/205282728-9bdac5cc-1d56-46a3-b1c5-f1cdbf4dad23.png">
+<img width="946" alt="async_res" src="https://user-images.githubusercontent.com/114488271/205282738-e0f646cd-6a3d-45e1-a40f-b1a407a66b62.png">
+<img width="875" alt="async_res_implementaion" src="https://user-images.githubusercontent.com/114488271/205282741-ebb0eb31-146c-46ee-ae86-63db8439c2f7.png">
+<img width="782" alt="async_set" src="https://user-images.githubusercontent.com/114488271/205282751-d2d90eb6-5686-48a6-8a35-78fe391c86ee.png">
+<img width="659" alt="heirarchial_flat-1" src="https://user-images.githubusercontent.com/114488271/205282758-3be1b952-2a93-4087-b7de-bbf896f583a7.png">
+<img width="385" alt="heirarchial_flat-2" src="https://user-images.githubusercontent.com/114488271/205282762-3f175401-b812-403e-8d02-c77ce6003cfd.png">
+<img width="637" alt="heirarchial_flat-3" src="https://user-images.githubusercontent.com/114488271/205282767-5b677c8c-46f3-4372-affa-5c154bcce670.png">
+<img width="867" alt="heirarchial_flat-4" src="https://user-images.githubusercontent.com/114488271/205282772-ee1865e1-dd2c-410a-acac-ebc2eef0c1dc.png">
+<img width="811" alt="multiplication RTL codes" src="https://user-images.githubusercontent.com/114488271/205282779-1de15d1f-ce80-40c7-a94e-9298e9e40480.png">
+<img width="817" alt="optimisation-1" src="https://user-images.githubusercontent.com/114488271/205282785-d0c0ff71-6c6e-469a-90d5-e6a0912f4a4e.png">
+<img width="679" alt="optimisation-2" src="https://user-images.githubusercontent.com/114488271/205282790-a55adc0b-ac1f-48db-8dce-c2969bb7898a.png">
+<img width="682" alt="Screenshot_20221201_041101" src="https://user-images.githubusercontent.com/114488271/205282799-c4857ca7-9742-4440-8b20-61a27efa1131.png">
+<img width="654" alt="Screenshot_20221201_041614" src="https://user-images.githubusercontent.com/114488271/205282809-b3cf42ec-1c1c-4f47-9d8c-d20b3e0e0dc4.png">
+<img width="640" alt="Screenshot_20221201_044836" src="https://user-images.githubusercontent.com/114488271/205282817-d62cafb5-e82a-4985-a38e-081aec0af8d3.png">
+<img width="579" alt="Screenshot_20221201_045229" src="https://user-images.githubusercontent.com/114488271/205282828-4b946343-76e8-4dbc-80a6-3480c353a85f.png">
+<img width="646" alt="Screenshot_20221201_045315" src="https://user-images.githubusercontent.com/114488271/205282835-cc43743d-95e5-4c62-bf8a-d281a6b09c09.png">
+<img width="465" alt="Screenshot_20221201_045806" src="https://user-images.githubusercontent.com/114488271/205282846-e242e495-7cc9-4a1a-b876-db3c9655b080.png">
+
 
 
 
