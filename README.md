@@ -155,7 +155,7 @@ iverilog good_mux.v tb_good_mux.v
 * read_liberty : It is used to read the library .lib
 * write_verilog : It is used to write out the netlist
 
-##Labs using yosys and sky130 PDKs
+## Labs using yosys and sky130 PDKs
 ---
 commands to synthesise an RTL code(good_mux) are:
 ```
@@ -334,7 +334,7 @@ Inorder to produce a digital circuit design which is optimised interms of area a
         * Retiming
         * Sequential Logic Cloning
         
- ** Combinational Logic Optimisations **
+ **Combinational Logic Optimisations**
  ---
  
 We will try to understand each of the above mentioned combinational optimisations through different RTL code examples. We also check the synthesis implementation through yosys to understand how the optimisations take place.
@@ -381,7 +381,7 @@ For multiple_module_opt2.v on boolean optimisation, we obtain y=1 simply. It's s
 
 <img width="895" alt="multiple_module_opt2" src="https://user-images.githubusercontent.com/114488271/205887068-80e84189-3675-45b7-b510-dbf2b36c0689.png">
 
-** Sequential Logic Optimisations **
+**Sequential Logic Optimisations**
 ---  
 
 We will try to understand each of the sequential optimisations through different RTL code examples. For each example, We also check the synthesis implementation through yosys to understand how the optimisations take place.
@@ -393,6 +393,7 @@ All the optimisation examples are in files dff_coonst1.v,dff_const2.v,dff_const3
 In the code dff_const1.v, it appears that the output Q should be equal to an inverted reset or Q=!reset. However, as the reset is synchronous,even if the flop has D pinned to logic 1,when reset becomes 0, Q does not immediately goto 1. It waits untill the positive edge of the next clock cycle.
 This is observed by simulating the design in verilog, and viewing the VCD with GTKWave as follows
 <img width="926" alt="dff_const1_gtk" src="https://user-images.githubusercontent.com/114488271/205886972-a3805fd5-c0b3-4c4a-9f1e-cab0a9068b7e.png">
+
 Observation : In the gtk waveform above , when reset becomes 0, Q becomes 1 at the next clock edge. Since Q can be either 1 or 0,we do not get a sequential constant, and no optimisations should be possible here. We verify it using Yosys synthesis and optimisation.
 While synthesis,We use
 ```
@@ -407,24 +408,29 @@ abc -liberty ../lib/sky130_fd_sc_hd_tt_025C_1v80.lib
 write_verilog -noattr dff_const1_netlist.v  
 show  
 ```
-<img width="922" alt="dff_const1_block" src="https://user-images.githubusercontent.com/114488271/205886961-7d62b18c-cab4-4c69-8f23-b79597c97f77.png">  
+<img width="922" alt="dff_const1_block" src="https://user-images.githubusercontent.com/114488271/205886961-7d62b18c-cab4-4c69-8f23-b79597c97f77.png"> 
+
 As expected, No optimisation is performed in th yosys implementation during synthesis.
 
 In dff_const2.v, regardless of the inputs, the output q always remains constant at 1 .
 This is observed by simulating the design in verilog, and viewing the VCD with GTKWave as follows  
 <img width="909" alt="dff_const2_gtk" src="https://user-images.githubusercontent.com/114488271/205886985-331d5af2-43c9-40af-b523-60e34b54c1b8.png">
+
 Since the output is always constant ie Q=1, it can easily be optimised during synthesis.
 
 In dff_cosnt3.v ,when reset goes from 1 to 0,Q1 follows D at the next positive clock edge in an ideal ckt. But in reality, Q1 becomes 1 a little after the next positive clk edge(once reset has been made 0)due to Clock-to-Q delay.
 Thus, q takes the value 0 until the next clock edge when it read an input of 1 from q1. This is confirmed with the simulated waveform below.  
 <img width="926" alt="dff_const3_gtk" src="https://user-images.githubusercontent.com/114488271/205887015-fa25b644-e1aa-4686-afe9-93f84f305d1c.png">
+
 Since Q takes both logic 0 and 1 values in different clock cycles. It is wrong to say that Q=!(reset) or Q=Q1
 Hence, both the flip-flops are retained and no optimisations are performed on this design. We can confirm this using Yosys as shown below.
 <img width="926" alt="dff_const3_block" src="https://user-images.githubusercontent.com/114488271/205886994-1ccb9533-adfa-4702-8ffb-44d607ea1f98.png">
+
 Both the D flip-flops are present in the synthesized netlist.
 
 In dff_const4.v, regardless of the input whether reset or not , Q1 is always going to be constant i.e. Q1=1 . As q can only be 1 or q1 depending on the reset input, but q1 = 1 .Thus q is also constant at the value 1. We can confirm this with the simulated waveforms as shown below.
 <img width="907" alt="dff_const4_gtk" src="https://user-images.githubusercontent.com/114488271/205887028-933cc752-e038-4d43-8c98-d90563d7229b.png">
+
 As the output is always constant, it can easily be optimised using Yosys as shown in the graphical representation.  
 <img width="888" alt="dff_4_block" src="https://user-images.githubusercontent.com/114488271/205886927-4128a3ec-a8b7-43d6-b1b2-e1f11b3f7204.png">
 
@@ -432,10 +438,71 @@ In the image below, codes of both counter_opt.v and counter_opt2.v are present.
 <img width="613" alt="counter" src="https://user-images.githubusercontent.com/114488271/205886893-daf41f58-36bb-42e8-ba08-5e34278e4399.png">
 
 <img width="434" alt="counter_stats" src="https://user-images.githubusercontent.com/114488271/205886900-f4f46be8-ee53-43c7-a789-861eaffa2487.png">
+
 Synthesised ouput of counter_opt2.v
 <img width="939" alt="counter_synthesis" src="https://user-images.githubusercontent.com/114488271/205886905-8cf7d4d4-2659-42c3-b66b-16869da0c60b.png">
 
 
+## Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch
+---
+### Introduction to gate level simulations  
+---
+We validate our RTL design by providing stimulus to the testbench and check whether it meets our specifications earlier we were running the test bench with the RTL code as our design under test .
+But now under GLS ,we apply netlist to the testbench as design under test . What We did at the behavioral level in the RTL code got transformed to the net list in terms of the standard cells present in the library. So,netlist is logically same as the RTL code. They both have the same inputs and outputs so the netlist should seamlessly fit in the place of the RTL code. We put the netlist in place of the RTL file and run the simulation with the test bench.
+When we do simulation in with the help of RTL code there is no concept of timing analysis such as the hold and setup time which are critical for a circuit. For meeting this setup and hold time criteria there are different flavours of cell in the library.
+
+In GLS using iverilog flow, the design is a netlist which is given to Iverilog simulator in terms of standard cells present in the library. The library has different flavours of the same type of cell available.To make the simulator understand the specification of the different annotations of the cell the GATE level verilog models is also given as an input. If the GATE level models are timing aware (delay annotated ),then we can use the GLS for timing validation as well.
+
+ >The reason for the functional validation of netlist eventhough the netlist is the true representation of the RTL code is "Synthesis-Simulation mismatch."
+ 
+ Synthesis Simulaiton mismatches
+ ---
+ * Missing sensitivity list  
+ * Blocking and Non-Blocking statements
+ 
+ **Missing sensitivity list**
+Simulator functions on the basis of input change. If there is no change in the inputs the simulator won't evaluate the output at all.  
+
+Below image shows the codes of multiplexers in different ways. The codes are for ternary_operator_mux.v,bad_mux.v and good_mux.v
+<img width="803" alt="Screenshot_20221204_065205" src="https://user-images.githubusercontent.com/114488271/205918717-de1231f9-bba6-4df2-8d36-3c9dce13de69.png">
+
+The problem in the bad_mux code is that simulation happens only when the select is high so if select is slow and there are changes in i0 or i1 they get completely missed. So for the simulator this marks as good as a latch but the synthesizer does not look at the sensitivity list it checks at the functionality and creates a mux. 
+>Simulation infers a latch and Synthesis results in a mux Hence,Mismatch.
+
+Blocking and Non-blocking statements inside an always block.
+
+* Blocking Executes the statements in the order it is written So the first statement is evaluated before the second statement.
+* Non Blocking Executes all the RHS when always block is entered and assigns to LHS. Parallel evaluation.
+
+
+
+
+
+
+
+
+
+
+
+
+Simulation of the ternary_operator_mux.v is below.
+ 
+<img width="921" alt="Screenshot_20221204_065752" src="https://user-images.githubusercontent.com/114488271/205918589-93b6cc2e-5154-4a12-bbb9-c66e11e94605.png">
+
+Synthesis of the ternary_operator_mux.v is
+
+<img width="886" alt="Screenshot_20221204_070633" src="https://user-images.githubusercontent.com/114488271/205918601-6e0b1234-cc71-41fd-badc-d406c62dbaf3.png">
+
+
+<img width="929" alt="Screenshot_20221204_071302" src="https://user-images.githubusercontent.com/114488271/205918612-07bc4241-8f2a-4116-bb10-462dd23d4e2a.png">
+<img width="917" alt="Screenshot_20221204_072115" src="https://user-images.githubusercontent.com/114488271/205918618-9515c0ea-b075-412c-9b81-cd37cb20faf8.png">
+<img width="722" alt="Screenshot_20221205_064525" src="https://user-images.githubusercontent.com/114488271/205918641-6eed4726-33d9-46c3-80a5-16d27d40692d.png">
+<img width="920" alt="Screenshot_20221205_064707" src="https://user-images.githubusercontent.com/114488271/205918647-f8da1c91-b286-4e45-866a-7b7c0f366d84.png">
+<img width="913" alt="Screenshot_20221205_065245" src="https://user-images.githubusercontent.com/114488271/205918667-c914f41c-fcb6-46d0-9057-4a3994d2399a.png">
+<img width="929" alt="Screenshot_20221205_070722" src="https://user-images.githubusercontent.com/114488271/205918675-4ec457f3-8e31-437f-847e-5b98a13ba06e.png">
+<img width="912" alt="Screenshot_20221205_071419" src="https://user-images.githubusercontent.com/114488271/205918699-9f1f784a-6d52-42a0-8c43-97b1cd39b2ac.png">
+<img width="917" alt="Screenshot_20221205_071605" src="https://user-images.githubusercontent.com/114488271/205918706-2f561a51-a354-4080-8718-1959cb3db23b.png">
+<img width="755" alt="Screenshot_20221205_071646" src="https://user-images.githubusercontent.com/114488271/205918714-659db27b-7108-4f24-aa2d-85effa130fda.png">
 
 
 
