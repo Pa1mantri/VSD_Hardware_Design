@@ -310,6 +310,13 @@ On synthesizing the netlist and look at its graphical realisation , we will see 
 
 <img width="679" alt="optimisation-2" src="https://user-images.githubusercontent.com/114488271/205282790-a55adc0b-ac1f-48db-8dce-c2969bb7898a.png">
 
+## Day-3 : Combinational and Sequential optimisations
+----
+### Introduction to logic optimisations
+----
+Inorder to produce a digital circuit design which is optimised interms of area and power, the simulator performs many types of optimisations on the combinational and sequential circuits.  
+
+
 
 
 
