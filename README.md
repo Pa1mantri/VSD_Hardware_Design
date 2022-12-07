@@ -199,9 +199,9 @@ The following window appears that shows the library file SKY130_fd_sc_hd__tt_025
 
 First line is the name of the library where TT stands for typical. For a design to work three parameters of the library are important :
 
-*.P- Process:Process is the variations due to fabrication
-*.V -voltage: Variations in voltage also impact the behavior of the circuit.
-*.T- temperature :Semiconductors are very sensitive to temperature variations too. All this variations determine the performance of a silicon whether it is fast or slow. Thus, our libraries are characterized to model this variations. The voltage process and temperature conditions are also specified.
+* P- Process:Process is the variations due to fabrication..  
+* V -voltage: Variations in voltage also impact the behavior of the circuit.  
+* T- temperature :Semiconductors are very sensitive to temperature variations too. All this variations determine the performance of a silicon whether it is fast or slow. Thus, our libraries are characterized to model this variations. The voltage process and temperature conditions are also specified.
 
 Switching off the syntax color red  
 ```
@@ -341,13 +341,17 @@ We will try to understand each of the above mentioned combinational optimisation
 All the optimisation examples are in files opt_check.v,opt_check2.v,opt_check_3.v opt_check4.v,counter.v and multiple_modules_opt.v. All of these files are present under the verilog_files directory.
 
 Below image shows the RTL code for some of the examples mentioned above  
+
 <img width="710" alt="opt_0_1_2_3_4" src="https://user-images.githubusercontent.com/114488271/205887079-55fd2b1e-57c9-443b-8223-b508b39d0a6a.png">
+
 IN the code for opt_check, ideally the above ternary operator should give us a mux. But the constant 0 propagates further in the logic .Using boolean simplification we obtain y = ab.  
 
 Synthesizing this in yosys :
 
 Before realising the netlist, we must issue a command to yosys to perform optimisations. It removes all unused cells and wires to prduce optimised digital circuit.This can be done using the opt_clean -purge command as shown below.
+
 <img width="499" alt="and_statistics" src="https://user-images.githubusercontent.com/114488271/205886889-d0d65906-283d-4ba0-a51c-7f5af97f7a9f.png">
+
 Observation : After executing synth -top opt_check ,we see in the report that 1 AND gate has been inferred.
 
 Next,
@@ -418,6 +422,9 @@ This is observed by simulating the design in verilog, and viewing the VCD with G
 
 Since the output is always constant ie Q=1, it can easily be optimised during synthesis.
 
+<img width="827" alt="upload at line 343" src="https://user-images.githubusercontent.com/114488271/206062968-c7ea5507-c4c1-4222-bff2-1252eab8e377.png">
+
+
 In dff_cosnt3.v ,when reset goes from 1 to 0,Q1 follows D at the next positive clock edge in an ideal ckt. But in reality, Q1 becomes 1 a little after the next positive clk edge(once reset has been made 0)due to Clock-to-Q delay.
 Thus, q takes the value 0 until the next clock edge when it read an input of 1 from q1. This is confirmed with the simulated waveform below.  
 <img width="926" alt="dff_const3_gtk" src="https://user-images.githubusercontent.com/114488271/205887015-fa25b644-e1aa-4686-afe9-93f84f305d1c.png">
@@ -449,7 +456,10 @@ Synthesised ouput of counter_opt2.v
 ---
 We validate our RTL design by providing stimulus to the testbench and check whether it meets our specifications earlier we were running the test bench with the RTL code as our design under test .
 But now under GLS ,we apply netlist to the testbench as design under test . What We did at the behavioral level in the RTL code got transformed to the net list in terms of the standard cells present in the library. So,netlist is logically same as the RTL code. They both have the same inputs and outputs so the netlist should seamlessly fit in the place of the RTL code. We put the netlist in place of the RTL file and run the simulation with the test bench.
-When we do simulation in with the help of RTL code there is no concept of timing analysis such as the hold and setup time which are critical for a circuit. For meeting this setup and hold time criteria there are different flavours of cell in the library.
+When we do simulation in with the help of RTL code there is no concept of timing analysis such as the hold and setup time which are critical for a circuit. For meeting this setup and hold time criteria there are different flavours of cell in the library.  
+
+<img width="886" alt="Screenshot_20221207_063403" src="https://user-images.githubusercontent.com/114488271/206062920-f0da6741-cdf8-40db-a4a9-afc84ca3843e.png">
+
 
 In GLS using iverilog flow, the design is a netlist which is given to Iverilog simulator in terms of standard cells present in the library. The library has different flavours of the same type of cell available.To make the simulator understand the specification of the different annotations of the cell the GATE level verilog models is also given as an input. If the GATE level models are timing aware (delay annotated ),then we can use the GLS for timing validation as well.
 
@@ -464,6 +474,7 @@ In GLS using iverilog flow, the design is a netlist which is given to Iverilog s
 Simulator functions on the basis of input change. If there is no change in the inputs the simulator won't evaluate the output at all.  
 
 Below image shows the codes of multiplexers in different ways. The codes are for ternary_operator_mux.v,bad_mux.v and good_mux.v
+
 <img width="803" alt="Screenshot_20221204_065205" src="https://user-images.githubusercontent.com/114488271/205918717-de1231f9-bba6-4df2-8d36-3c9dce13de69.png">
 
 The problem in the bad_mux code is that simulation happens only when the select is high so if select is slow and there are changes in i0 or i1 they get completely missed. So for the simulator this marks as good as a latch but the synthesizer does not look at the sensitivity list it checks at the functionality and creates a mux. 
@@ -472,20 +483,40 @@ The problem in the bad_mux code is that simulation happens only when the select 
 Blocking and Non-blocking statements inside an always block.
 
 * Blocking Executes the statements in the order it is written So the first statement is evaluated before the second statement.
-* Non Blocking Executes all the RHS when always block is entered and assigns to LHS. Parallel evaluation.
+* Non Blocking Executes all the RHS when always block is entered and assigns to LHS. Parallel evaluation.  
 
+Blocking assignments:
 
+<img width="619" alt="Screenshot_20221207_063659" src="https://user-images.githubusercontent.com/114488271/206062917-0f63dbca-5df0-442f-9da3-02c63c007f01.png">
 
+In this case, D is assigned to Qo  which is then assigned to Q. Due to optimisation a single latch is formed where Q is equal to D.  
 
+Non-blocking assignments:
 
+```
+begin
+q0<=d;
+q1<=q0;
+end
+```
+In the non blocking assignments all the RHS are evaluated and parallel assigned to lhs irrespective of the order in which they appear. So we will always get a two flop shift register.
 
+Therefore we always use non blocking statements for writing sequential circuits.
 
+Example:
 
+<img width="624" alt="Screenshot_20221207_063825" src="https://user-images.githubusercontent.com/114488271/206062918-2edc1c57-9c1d-4dc2-8a34-5d2c4c5ac280.png">
 
+We enter into the loop whenever any of the inputs a b or C changes but Y is assigned with old Qo value since it is using the value of the previous Tclk ,the simulator mimics a delay or a flop. Where as, during synthesis we see the the OR and AND gates as expected.
 
+Therefore ,while using blocking statements in this case,we should evaluate Q0 first and then Y so that Y takes on the updated values of Qo. Although both the circuits on synthesis give the same digital circuit comprising of AND, OR gates. But on simulation we get different behaviours.
 
+### Labs on GLS and Synthesis-Simulation mismatch
+---
 
-Simulation of the ternary_operator_mux.v is below.
+<img width="803" alt="Screenshot_20221204_065205" src="https://user-images.githubusercontent.com/114488271/205918717-de1231f9-bba6-4df2-8d36-3c9dce13de69.png">
+
+Simulation of the ternary_operator_mux.v using design as UUT is below.
  
 <img width="921" alt="Screenshot_20221204_065752" src="https://user-images.githubusercontent.com/114488271/205918589-93b6cc2e-5154-4a12-bbb9-c66e11e94605.png">
 
@@ -493,16 +524,68 @@ Synthesis of the ternary_operator_mux.v is
 
 <img width="886" alt="Screenshot_20221204_070633" src="https://user-images.githubusercontent.com/114488271/205918601-6e0b1234-cc71-41fd-badc-d406c62dbaf3.png">
 
+To invoke GLS,
+
+* We need to read our netlist file and the test bench file assosciated with it.
+* We need to read 2 extra files that contain the description of verilog models in the netlist.
+ 
+>iverilog ../my_lib/verilog_model/primitives.v ../my_lib/verilog_model/sky130_fd_sc_hd.v ternary_operator_mux_net.v tb_ternary_operator_mux.v
 
 <img width="929" alt="Screenshot_20221204_071302" src="https://user-images.githubusercontent.com/114488271/205918612-07bc4241-8f2a-4116-bb10-462dd23d4e2a.png">
+
+To see the waveform of RTL simulation using netlist as UUT ,we execute the following commands further
+
+```
+./a.out
+gtkwave tb_ternary_operator_mux.v
+```
 <img width="917" alt="Screenshot_20221204_072115" src="https://user-images.githubusercontent.com/114488271/205918618-9515c0ea-b075-412c-9b81-cd37cb20faf8.png">
+
+RTL codes of bad_mux.v and good_mux.v
+
 <img width="722" alt="Screenshot_20221205_064525" src="https://user-images.githubusercontent.com/114488271/205918641-6eed4726-33d9-46c3-80a5-16d27d40692d.png">
-<img width="920" alt="Screenshot_20221205_064707" src="https://user-images.githubusercontent.com/114488271/205918647-f8da1c91-b286-4e45-866a-7b7c0f366d84.png">
+
+For bad_mux.v the GTK simulation using the testbench and the design gives the following result.
+
+<img width="920" alt="Screenshot_20221205_064707" src="https://user-images.githubusercontent.com/114488271/205918647-f8da1c91-b286-4e45-866a-7b7c0f366d84.png">  
+
+The design simulates a latch rather than a 2x1 mux.But the Yosys implementation shows a 2X1 mux .
+If we now implement it's GATE level netlist through GLS and observe the waveform,it shows the behaviour of a 2X1 mux as shown below:
+
 <img width="913" alt="Screenshot_20221205_065245" src="https://user-images.githubusercontent.com/114488271/205918667-c914f41c-fcb6-46d0-9057-4a3994d2399a.png">
-<img width="929" alt="Screenshot_20221205_070722" src="https://user-images.githubusercontent.com/114488271/205918675-4ec457f3-8e31-437f-847e-5b98a13ba06e.png">
-<img width="912" alt="Screenshot_20221205_071419" src="https://user-images.githubusercontent.com/114488271/205918699-9f1f784a-6d52-42a0-8c43-97b1cd39b2ac.png">
-<img width="917" alt="Screenshot_20221205_071605" src="https://user-images.githubusercontent.com/114488271/205918706-2f561a51-a354-4080-8718-1959cb3db23b.png">
+
+Since,the waveforms of stimulated RTL Code : Is of a LATCH the waveforms of gate level netlist thruogh GLS after synthesis: Is of 2X1 MUX We see a Synthesis-Simulation Mismatch.
+
+Example of synthesis-simulation mismatch due to wrong order of assignment in blocking assignments.
+
 <img width="755" alt="Screenshot_20221205_071646" src="https://user-images.githubusercontent.com/114488271/205918714-659db27b-7108-4f24-aa2d-85effa130fda.png">
+
+We enter into the loop whenever any of the inputs a b or C changes but D is assigned with old X value since it is using the value of the previous Tclk ,the simulator mimics a delay or a flop. Where as, during synthesis we see the the OR and AND gates as expected.
+
+<img width="917" alt="Screenshot_20221205_071605" src="https://user-images.githubusercontent.com/114488271/205918706-2f561a51-a354-4080-8718-1959cb3db23b.png">
+
+At the instance where both the inputs a and b are 1. a | b should output 1, which when ANDed with c, should give an output y of 1. The output d thus should hold the value 1. Instead,it holds the value 0 . But due to the blocking statements in the rtl code, it actually holds a the value of a OR b from the previous clock, hence giving us an incorrect output.
+
+The netlist representation on synthesis yields
+
+<img width="929" alt="Screenshot_20221205_070722" src="https://user-images.githubusercontent.com/114488271/205918675-4ec457f3-8e31-437f-847e-5b98a13ba06e.png">
+
+The synthesizer does not see the sensitivity list rather the functionality of the RTL design.Hence,the netlist representation does not include any latches to hold delayed values pertaining to the previous cycle. It only includes an OR 2 AND gate.
+
+If we run gate level simulations on this netlist in verilog, we observe the following waveform.
+
+<img width="912" alt="Screenshot_20221205_071419" src="https://user-images.githubusercontent.com/114488271/205918699-9f1f784a-6d52-42a0-8c43-97b1cd39b2ac.png">
+
+Here , we observe that the circuit behaves as intended combinational ckt. Output d results from the present value of inputs, and not the previous clock values like in the simulation results. Since the waveforms of the stimulated RTL verilog code do not match with the gate level simulation of generated netlist,we get a Synthesis-Simulation Mismatch again.
+
+## Day-5 if,case,for loop and for generate
+---
+
+**if construct**
+---
+
+If condition is used to to write priority logic. The condition one has a priority or if has more priority than the consecutive else statements . Only when condition 1 is not met condition 2 is evaluated and so on and y is assigned accordingly depending on the matching conditions.
+
 
 
 
