@@ -584,16 +584,296 @@ Here , we observe that the circuit behaves as intended combinational ckt. Output
 **if construct**
 ---
 
-If condition is used to to write priority logic. The condition one has a priority or if has more priority than the consecutive else statements . Only when condition 1 is not met condition 2 is evaluated and so on and y is assigned accordingly depending on the matching conditions.
+If condition is used to to write priority logic. The condition one has a priority or if has more priority than the consecutive else statements . Only when condition 1 is not met condition 2 is evaluated and so on and y is assigned accordingly depending on the matching conditions. So,If-Else code translates to a ladder like multiplexer structure in the final design instead of a single multiplexer.
+
+**Incomplete if statements** infers a latch.
+
+```
+if(condition1)
+y=a;
+else if(condition 2)
+y=b;
+```
+
+In the above code if condition 1 is matched y is equal to a else if condition 2 is matched y is equal to b but there is no specification for the case when condition2 is not matched, as a result of which the simulator tries to latch this case to the output y.It wants to retain the value of y.
+This is a combinational loop to avoid that the simulator infers a latch. Enable of this latch is OR of the condition 1 and condition 2. If neither condition 1 or condition 2 is met the OR gate output disables the latch . The latch retains the value of y and stores it.
+This is called the inferred latch due to incomplete if statements which is very dangerous for RTL designing. It should be avoided except for some special cases like the counter.
+
+```
+reg [2:0] count;
+always@(posedge clk)
+begin
+if(reset)
+count <=3'b000;
+else if(enable)
+count <= count+1;
+end
+```
+This is also a case of incomplete if statements. Here ,if there is no enable the counter should latch onto the previous value.For example if the counter has counted up till 4 and there is no enable then it should retain the value 4 rather than going to 0 again.
+So here the incomplete if statements result in latching And retaining the previous value which is our desired behavior in a counter. The earlier mux example was a combinational circuit and therefore we cannot have inferred latches.
+
+Note:
+If, case statements are used inside always block.
+In verilog whatever variable we use to assign in if or case statements must be a register variable.
+
+
+**case construct**
+
+```
+always@(*)
+begin
+case(sel)
+    2'b00: y= statement1;
+    2'b01: y= statement2;
+    2'b10: y= statement3;
+    2'b11: y= statement4;
+endcase
+end
+```
+The case statements do not infer priority logic like IF statements. Depending upon the case matching the y is assigned accordingly.
+
+Some caveats with using CASE statements:
+
+* Incomplete case
+* Partial assignments
+* Overlapping cases
+
+**Incomplete Cases**
+
+```
+reg [1:0] sel;
+always@(*)
+begin
+    case(sel)
+    2'b00: condition 1;
+    2'b01: condition 2;
+   endcase
+end
+
+```
+
+If select is 10 or 11 the conditions are not specified. It causes an incomplete case which results in inferred latches for these two cases that latch on to output y.This occurs when some cases are not specified inside the CASE block .For example, if the 2'b10 and 2'b11 cases were not mentioned , the tool would synthesize inferred latches at the 3rd and 4th inputs of the multiplexer.
+Solution is to code the case block with default inside the CASE block so that the tool knows what to do when a case that is not specified occurs.
+    
+
+```
+reg [1:0] sel;
+always@(*)
+begin
+    case(sel)
+    2'b00: condition 1;
+    2'b01: condition 2;
+    default:condition 3;
+   endcase
+end
+
+```
+
+**Partial Assignments**
+
+```
+reg [1:0] sel;
+always@(*)
+begin
+    case(sel)
+    2'b00: begin
+            x = a;
+            y = b;
+            end
+    2'b01: begin 
+            x = c;
+            end
+    default: begin 
+            x = d;
+            y = d;
+            end
+   endcase
+end
+
+```
+In the above example, we have 2 outputs x and y. This will create two 4X1 multiplexers with the respective outputs. If we look at case 2'b01, we have specified the value of x for this case ,but not the value of y. It appears that it is okay to do so, as a default case is specified for both the outputs, and if we don't directly specify the value of y for any case, the simulator will implement the default case. This, however , is incorrect. In partial assignments such as this, the simulator will infer a latch at the 2nd input for multiplexer y as no value is specified for a particular case.
+
+**Overlapping case**
+
+
+```
+reg [1:0] sel;
+always@(*)
+begin
+    case(sel)
+    2'b00: begin
+            x = a;
+            end
+    2'b01: begin 
+            x = b;
+            end
+     2'b10: begin 
+            x = c;
+            end
+     2'b1?: begin 
+            x = d;
+            end
+   endcase
+end
+
+```
+
+In the above code block ,2'b1? specifies that the corresponding bit can be either be 0 or 1. This means when the sel input is holding a value 3 i.e 2'b11, cases 3 and 4 both hold true. What is synthesized depends on the mercy of the simulator. It can lead to Synthesis-Simulation mismatches.
+If we used an IF condition here, due to priority logic, condition 4 would be ignored when condition 3 is met. However,in the CASE statement , even if the upper case is matched,all the cases are checked.So,if there is overlapping in cases,it poses a problem as the cases are not mutually exclusive. And we would get an unpredictable output.
+
+### Labs on incorrect IF and case constructs 
+---
+
+Below are the files titled incomp_if.v, incomp_if2.v and can be found in the directory verilog_files.
+
+<img width="731" alt="Screenshot_20221205_102737" src="https://user-images.githubusercontent.com/114488271/206408357-c826100d-ae68-41cb-9c5d-5230caf11ab1.png">
+
+The code incomp_if.v contains an incomplete IF statement as no else condition corresponding to it is mentioned . On simulating this design , following gtkwave is obtained
+
+<img width="929" alt="Screenshot_20221205_102942" src="https://user-images.githubusercontent.com/114488271/206408360-607d2566-7bd9-411b-8863-9b465336401e.png">
+
+From the above waveform, We observe no change in y when i0=0.It's equal to previous value when io=0. This shows latching Action, which is verified by looking at the synthesis implementation using Ysosys. A D-latch is created in the synthesised netlist.
+
+<img width="851" alt="Screenshot_20221205_104237" src="https://user-images.githubusercontent.com/114488271/206408375-c37f6e11-a349-4faa-9f4f-149c91152c5b.png">
+
+The code in incomp_if2.v  contains an incomplete IF statement as well. Here, we have 2 inputs i1 and i3, as well as 2 conditional inputs i0 and i2. As we do not specifythe case when both i0 and i2 go low,which results in an issue in the synthesis. The gtkwaveform of the simulated design is below
+
+<img width="896" alt="Screenshot_20221205_105050" src="https://user-images.githubusercontent.com/114488271/206408386-218067ac-4199-4ae8-931d-fada6077f433.png">
+
+Observation: When io is high,output follows i1. When io is low,it looks for i2.If i2 is high,it follows i3. But if i2 is low(and io is already low),y attains a constant value that is previous output.
+
+This can be verified by checking the graphical realisation of the yosys synthesis below.
+
+<img width="873" alt="Screenshot_20221205_105342" src="https://user-images.githubusercontent.com/114488271/206408399-a15f5b7f-aa20-49a0-89cf-9d6ea9f7e778.png">
+
+Yosys synthesizes a multiplexer as well as a latch with some combinational logic at its enable pin.
+
+Below are the codes for incomp_case.v, comp_case.v
+
+<img width="771" alt="Screenshot_20221205_011958" src="https://user-images.githubusercontent.com/114488271/206408165-748e8b4f-27d2-4aa3-8727-a4e98f455516.png">
+
+Whenever se[1]=1 ,latching action takes place. The yosys synthesis implementation is given below.
+
+<img width="916" alt="Screenshot_20221205_011918" src="https://user-images.githubusercontent.com/114488271/206408160-bc80b143-12f2-4f2a-b5f3-2a834454c1a6.png">
+
+Observation: 1. (sel[1]) is going to D latch enable. 2.The inputs io,sel[0], !(sel[1]) go to the upper mixing logic that is implemented on D pin of the latch.
+
+In comp_case.v code Output follows i2 at default case,if i1 and io go low. Hence a 4X1 mux is synthesized without any latch that can be verified below.
+
+<img width="925" alt="Screenshot_20221205_012308" src="https://user-images.githubusercontent.com/114488271/206408185-b902d1de-05e6-441a-ab34-6188031834a0.png">
+
+**Partial assignments**
+
+<img width="854" alt="Screenshot_20221205_012558" src="https://user-images.githubusercontent.com/114488271/206408188-ff81bc83-e0ae-405d-80da-334e38c2b957.png">
+
+The 2X1 mux with output y is inferred without any latch. The second output x will infer a latch. Below image shows the statistics of the gates and latches it infers
+
+<img width="482" alt="Screenshot_20221205_013451" src="https://user-images.githubusercontent.com/114488271/206408192-4065ecd5-c086-417d-867f-5689f97f4646.png">
+
+4:1 mux with overlapping case:
+
+<img width="834" alt="Screenshot_20221205_015430" src="https://user-images.githubusercontent.com/114488271/206408197-f406e733-fffc-4565-86fd-918541657464.png">
+
+In gtkwaveform of RTL simulation:
+
+<img width="926" alt="Screenshot_20221205_015849" src="https://user-images.githubusercontent.com/114488271/206408203-3e26024c-f6a9-4a81-bce7-9504a7e1f279.png">
+
+Observation : When sel[1:0]=11, the output neither follows i2 nor i3. It simply latches to 1.
+
+Whereas while running GLS on the netlist,the waveform of the synthesized netlist behaves as 4X1 mux as shown below
+
+<img width="897" alt="Screenshot_20221205_020910" src="https://user-images.githubusercontent.com/114488271/206408210-38e8bc81-c354-403f-b82f-4693f1f7c429.png">
+
+Thus ,Overlapping cases confuse the simulator and leads to Synthesis-Simulation Mismatches.
+
+**Introduction to Looping constructs**
+---
+
+There are two types of FOR loops in verilog.
+
+* For loop used in always block used to evaluate expressions.
+* Generate for loop only used outside the always block, used for instantiating hardware.
+
+For loops are extremely useful when we want to write a code /design that involves multiple assignments or evaluations within the always block. Lets us take an example, If we want to write the code for 4:1 multiplexer, we can easily do so using a either four if blocks or using a case block with 4 cases,as seen in the previous if-else blocks.But this approach is not suitable for complicated design with numerous inputs/outputs say 256X1 mux.If we wanted to design a 256X1 multiplexer, we will have to write 256 lines of condition statements using select and corresponding assignments. But in for loop ,be it 4X1 or 256X1 we would always be writing 4 lines of code only. Although we need to provide 256 inputs using an internal bus.
+
+```
+integer k;
+always@(*)
+begin
+for(k=0;k<256;k=k+1)
+begin
+if(k==sel)
+y=in[k];
+end
+end
+```
+This code can be infinitely scaled up by just replacing the condition k < 256 with the desired specification for our multiplexer.
+
+Similarly, we can create High input demultiplexers as well.
+
+```
+integer k;
+always@(*)
+begin
+int_bus[15:0] = 16'b0;
+for(k=0;k<16;k=k+1)
+begin
+if(k==sel)
+int_bus[k]=inp[k];
+end
+end
+```
+Here , we have created a 16:1 demultiplexer using for loops within the always block. The int_bus[15:0] specifies our internal bus which takes on the input of the demux. It is necessary to assign all outputs to low for a new value of sel else latches will be inferred resulting in the incorrect implementation of our logic.
+
+mux_generate.v that generates a 4X1 mux using For loop.
+
+<img width="611" alt="Screenshot_20221205_034433" src="https://user-images.githubusercontent.com/114488271/206408259-b217c285-ece1-4f4b-b1eb-e0b42e38720e.png">
+
+The gtkwave obtained after the simulation
+
+<img width="887" alt="Screenshot_20221205_033829" src="https://user-images.githubusercontent.com/114488271/206408232-15da724b-fad4-4bec-9a0b-7e3a786083ef.png">
+
+demux_generate.v that generates a 4X1 demux using For loop.
+
+<img width="736" alt="Screenshot_20221205_035547" src="https://user-images.githubusercontent.com/114488271/206408267-f6083172-bc77-426d-8f67-a2e49eeee880.png">
+
+The above code has good readabilty,scalability and easy to write as well. Let's verify if it functions as a 8X1 demux as expected by viewing its gtkwave simulated waveform.
+
+<img width="806" alt="Screenshot_20221205_041550" src="https://user-images.githubusercontent.com/114488271/206408300-6cb2d99c-e9f9-41d6-b729-67e0f00f92b5.png">
+
+
+**for generate**
+
+FOR Generate is used when we needto create multiple instances of the same hardware. We must use the For generate outside the always block.
+
+We take example of a 8 bit Ripple Carry Adder(RCA) to understand the ease of instantiations provided by the For generate statement. An RCA consists of Full Adders tied in series where the carry out of the previous full adder is fed as the carry in bit of the next full adder in the chain. Hence, we can make use of generate for to instantiate every full adder in the design , as they are all represent the same hardware.
+
+For this example , we use the file rcs.v which holds the code for the ripple carry adder. It also needs to be included in our simulation. Here, fa references another verilog design file containing the definition of all the full adder submodules .This is shown below, from the fa.v file
+
+<img width="865" alt="Screenshot_20221205_051042" src="https://user-images.githubusercontent.com/114488271/206408333-fa291834-3bf6-4101-b5e4-255cc3d33416.png">
+
+In the RCA verilog code, we instantiate fa in a loop using generate for outside the always block.
+
+Now, let us simulate this design in verilog and view its waveform with GKTWave .As the rca design referances the file fa.v , we must specify it in our commands as follows
+
+```
+iverilog fa.v rca.v tb_rca.v
+./a.out
+gtkwave tb_rca.v
+```
+the resulting gtkwaveform is shown below that shows an adder being simulated:
+
+<img width="894" alt="Screenshot_20221205_052051" src="https://user-images.githubusercontent.com/114488271/206408343-70f596fd-3d6a-4924-80d5-f3b7d93082eb.png">
 
 
 
 
-
-
-
-
-
+<img width="901" alt="Screenshot_20221205_012205" src="https://user-images.githubusercontent.com/114488271/206408174-b529f7dd-32ee-41d6-8949-1df6c7982d13.png">
+<img width="764" alt="Screenshot_20221205_034408" src="https://user-images.githubusercontent.com/114488271/206408246-3fd2b308-703b-4f0c-813e-5089de24f4d9.png">
+<img width="860" alt="Screenshot_20221205_040636" src="https://user-images.githubusercontent.com/114488271/206408278-d38004fa-8cf9-4735-be49-313dee1b3115.png">
+<img width="503" alt="Screenshot_20221205_041033" src="https://user-images.githubusercontent.com/114488271/206408294-d8a8713c-e821-4dad-b117-1269202d9433.png">
+<img width="914" alt="Screenshot_20221205_042117" src="https://user-images.githubusercontent.com/114488271/206408313-be5e2da3-d146-4620-988d-925499862881.png">
+<img width="909" alt="Screenshot_20221205_011122" src="https://user-images.githubusercontent.com/114488271/206408407-bb0b95e8-d693-48b0-a8b3-b0aae2c5b6b5.png">
 
 
 
