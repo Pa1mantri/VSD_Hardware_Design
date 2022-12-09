@@ -868,13 +868,6 @@ the resulting gtkwaveform is shown below that shows an adder being simulated:
 
 
 
-<img width="901" alt="Screenshot_20221205_012205" src="https://user-images.githubusercontent.com/114488271/206408174-b529f7dd-32ee-41d6-8949-1df6c7982d13.png">
-<img width="764" alt="Screenshot_20221205_034408" src="https://user-images.githubusercontent.com/114488271/206408246-3fd2b308-703b-4f0c-813e-5089de24f4d9.png">
-<img width="860" alt="Screenshot_20221205_040636" src="https://user-images.githubusercontent.com/114488271/206408278-d38004fa-8cf9-4735-be49-313dee1b3115.png">
-<img width="503" alt="Screenshot_20221205_041033" src="https://user-images.githubusercontent.com/114488271/206408294-d8a8713c-e821-4dad-b117-1269202d9433.png">
-<img width="914" alt="Screenshot_20221205_042117" src="https://user-images.githubusercontent.com/114488271/206408313-be5e2da3-d146-4620-988d-925499862881.png">
-<img width="909" alt="Screenshot_20221205_011122" src="https://user-images.githubusercontent.com/114488271/206408407-bb0b95e8-d693-48b0-a8b3-b0aae2c5b6b5.png">
-
 
 
 
