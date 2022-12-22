@@ -90,7 +90,7 @@ For simulating the gate level netlist we use the following command
 
 ```
 make post_synth_sim
-``
+```
 
 This will create two files post_synth_sim.out and post_synth_sim.vcd in the post_synth_sim folder.(output folder)
 
