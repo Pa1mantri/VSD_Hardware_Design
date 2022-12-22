@@ -85,6 +85,8 @@ stat
 write_verilog -noattr ../output/synth/vsdmemsoc.synth.v
 ```
 
+<img width="937" alt="Screenshot_20221221_051846" src="https://user-images.githubusercontent.com/114488271/209082036-172dd7b5-c3ba-406f-aab7-8213b355f373.png">
+<img width="960" alt="Screenshot_20221222_115342" src="https://user-images.githubusercontent.com/114488271/209082095-15772e6e-aa8e-463b-b0e6-18c00993703f.png">
 
 
 
