@@ -48,7 +48,7 @@ $ cd ~/VSDMemSoC
 $ make synth
 ```
 The above command results in synth.log and vsdmemsoc.synth.v files.
-vsdmemsoc.synth.v is the netlsit file generated using the given libraries used. All the commands needed to generate a netlist file are under one script file.
+vsdmemsoc.synth.v is the netlsit file generated using the given libraries. All the commands needed to generate a netlist file are under one script file.
 
 List of commands used in the script
 
@@ -85,6 +85,15 @@ stat
 
 write_verilog -noattr ../output/synth/vsdmemsoc.synth.v
 ```
+
+This will create two files post_synth_sim.out and post_synth_sim.vcd in the post_synth_sim folder.(output folder)
+
+>gtkwave post_synth_sim.vcd
+
+The above command gives the waveform post synthesis.
+
+Images of both pre and post synthesis simualtion of the desing:
+
 
 <img width="937" alt="Screenshot_20221221_051846" src="https://user-images.githubusercontent.com/114488271/209082036-172dd7b5-c3ba-406f-aab7-8213b355f373.png">
 <img width="960" alt="Screenshot_20221222_115342" src="https://user-images.githubusercontent.com/114488271/209082095-15772e6e-aa8e-463b-b0e6-18c00993703f.png">
