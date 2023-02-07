@@ -1,9 +1,9 @@
-# VSD Hardware Design Flow
+**VSD Hardware Design Flow**
 -------------------------------------------------------
-## Day-0 **Tool Installations**
+# Day-0 **Tool Installations**
 -------------------------------------------------------
 Environment: Windows-11 and Ubuntu-22.04
-## Tool: **Yosys**
+Tool: ***Yosys***
 
 Installation Flow:
 ```
@@ -20,7 +20,7 @@ $ sudo make install
 <img width="408" alt="yosys" src="https://user-images.githubusercontent.com/114488271/204250545-7b7cf48e-fc05-495c-b88c-94a5403b079c.png">    
 
 
-## Tool: **OpenSTA**  
+Tool: ***OpenSTA***  
 
 Installation guide:  
 (https://github.com/The-OpenROAD-Project/OpenSTA)#installing-with-cmake
@@ -47,7 +47,7 @@ Image:
 <img width="496" alt="STA" src="https://user-images.githubusercontent.com/114488271/204252666-51347fe2-9831-4603-a0ec-2fe5a72cfd1c.png">   
 
 
-## Tool : **ngspice**
+Tool : ***ngspice***
 
 Installation source:
 (https://sourceforge.net/projects/ngspice/files/ng-spice-rework/38/ )
@@ -72,9 +72,9 @@ $ sudo make install
 Image:  
 <img width="489" alt="ngspice" src="https://user-images.githubusercontent.com/114488271/204254212-423b71b1-5184-4bac-b709-2fbef1fcd3e7.png">  
 
-## Day -1  Introduction to verilog RTL design and Synthesis
+# Day -1  Introduction to verilog RTL design and Synthesis
 -------------------------------------------------------------
-## Introduction to opensource simulator iverilog
+**Introduction to opensource simulator iverilog**
 -------------------------------------------------------------
 **Simulator** : It is a tool for checking whether our RTL design meets the required specifications or not. Icarus Verilog is a simulator used for simulation and synthesis of RTL designs written in verilog which is one of the many hardware description languages.
 
@@ -144,7 +144,7 @@ iverilog good_mux.v tb_good_mux.v
  ```
  <img width="958" alt="mux code n tb" src="https://user-images.githubusercontent.com/114488271/204545185-254d6e7e-fcac-4e29-9390-392feea36609.png">
  
- ## Introduction to yosys and Logic Synthesis
+ **Introduction to yosys and Logic Synthesis**
  
 **Synthesizer** :It is a tool used for the conversion of an RTL to a netlist.  
 **Netlist**: It is a representation of the input design to yosys in terms of standard cells present in the library. Yosys is the Synthesizer tool that we will be using. Diiferent levels of abstraction and synthesis.  
@@ -155,7 +155,7 @@ iverilog good_mux.v tb_good_mux.v
 * read_liberty : It is used to read the library .lib
 * write_verilog : It is used to write out the netlist
 
-## Labs using yosys and sky130 PDKs
+**Labs using yosys and sky130 PDKs**
 ---
 commands to synthesise an RTL code(good_mux) are:
 ```
@@ -175,7 +175,7 @@ It also specifies the type and number of cells in a synthesis of RTL design
 <img width="544" alt="Screenshot_20221129_020509" src="https://user-images.githubusercontent.com/114488271/204778604-b59fa46e-0e8a-4fe5-aa73-bec13ae7b034.png">
 <img width="930" alt="Screenshot_20221129_020539" src="https://user-images.githubusercontent.com/114488271/204778222-2fe73a15-2b0b-40e5-8606-6a89ee9309e6.png">
 
-### Commands to write the netlist
+***Commands to write the netlist***
 ```
 write_verilog -noattr good_mux_netlist.v
 !gvim good_mux_netlist.v
@@ -184,9 +184,9 @@ write_verilog -noattr good_mux_netlist.v
 
 -------------------------
 
-## Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles
+# Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles
 ---- 
-### Introduction to Timing.lib
+***Introduction to Timing.lib***
 ----
 The library that is said to have a collection of all the standard cells along with their different flavors. We begin by understanding the name of the library. To look into the library,we use the gvim command  
 
@@ -227,7 +227,7 @@ We can see in the GVIM window above that there are two input for And gate, and t
 
 On comparison we see that the and gate "and2_4" has more area as compared to the and gate "and2_2" which in turn has more area with the and gate "and2_0". It is thus evident that and2_4 employs wider transistors. These are the different flavours of the same and gate. And and2_4 being the widest also has large leakage power values as well as large area. But it will have small delay values as it is faster.
 
-### HEIRARCHIAL VS FLAT SYNTHESIS  
+***HEIRARCHIAL VS FLAT SYNTHESIS*** 
 ----
 While syntheisizing the RTL design in which multiple modules are present, the synthesis can be done in two forms.
 
@@ -251,7 +251,7 @@ When we use flatten to generate a flat netlist. Here there are no instances of U
 
 <img width="867" alt="heirarchial_flat-4" src="https://user-images.githubusercontent.com/114488271/205282772-ee1865e1-dd2c-410a-acac-ebc2eef0c1dc.png">
 
-### Sub-Module Level Synthesis And Necessity
+**Sub-Module Level Synthesis And Necessity**
 ----
 Need for sub-module synthesis
 
@@ -274,7 +274,7 @@ synth -top sub_module1
 
 In the synthesis report,it inferring only 1 AND gate.
 
-### Asynchronous And Synchronous Resets 
+***Asynchronous And Synchronous Resets*** 
 ----  
 Asynchronous reset: this reset signal does not wait for a clock .The moment asynchronous reset signal is received output queue becomes 0 irrespective of the clock.
 
@@ -310,9 +310,9 @@ On synthesizing the netlist and look at its graphical realisation , we will see 
 
 <img width="679" alt="optimisation-2" src="https://user-images.githubusercontent.com/114488271/205282790-a55adc0b-ac1f-48db-8dce-c2969bb7898a.png">
 
-## Day-3 : Combinational and Sequential optimisations
+# Day-3 : Combinational and Sequential optimisations
 ----
-### Introduction to logic optimisations
+***Introduction to logic optimisations***
 ----
 Inorder to produce a digital circuit design which is optimised interms of area and power, the simulator performs many types of optimisations on the combinational and sequential circuits.  
 
@@ -450,9 +450,9 @@ Synthesised ouput of counter_opt2.v
 <img width="939" alt="counter_synthesis" src="https://user-images.githubusercontent.com/114488271/205886905-8cf7d4d4-2659-42c3-b66b-16869da0c60b.png">
 
 
-## Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch
+# Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch
 ---
-### Introduction to gate level simulations  
+***Introduction to gate level simulations***  
 ---
 We validate our RTL design by providing stimulus to the testbench and check whether it meets our specifications earlier we were running the test bench with the RTL code as our design under test .
 But now under GLS ,we apply netlist to the testbench as design under test . What We did at the behavioral level in the RTL code got transformed to the net list in terms of the standard cells present in the library. So,netlist is logically same as the RTL code. They both have the same inputs and outputs so the netlist should seamlessly fit in the place of the RTL code. We put the netlist in place of the RTL file and run the simulation with the test bench.
@@ -511,7 +511,7 @@ We enter into the loop whenever any of the inputs a b or C changes but Y is assi
 
 Therefore ,while using blocking statements in this case,we should evaluate Q0 first and then Y so that Y takes on the updated values of Qo. Although both the circuits on synthesis give the same digital circuit comprising of AND, OR gates. But on simulation we get different behaviours.
 
-### Labs on GLS and Synthesis-Simulation mismatch
+***Labs on GLS and Synthesis-Simulation mismatch***
 ---
 
 <img width="803" alt="Screenshot_20221204_065205" src="https://user-images.githubusercontent.com/114488271/205918717-de1231f9-bba6-4df2-8d36-3c9dce13de69.png">
@@ -578,7 +578,7 @@ If we run gate level simulations on this netlist in verilog, we observe the foll
 
 Here , we observe that the circuit behaves as intended combinational ckt. Output d results from the present value of inputs, and not the previous clock values like in the simulation results. Since the waveforms of the stimulated RTL verilog code do not match with the gate level simulation of generated netlist,we get a Synthesis-Simulation Mismatch again.
 
-## Day-5 if,case,for loop and for generate
+# Day-5 if,case,for loop and for generate
 ---
 
 **if construct**
@@ -721,7 +721,7 @@ end
 In the above code block ,2'b1? specifies that the corresponding bit can be either be 0 or 1. This means when the sel input is holding a value 3 i.e 2'b11, cases 3 and 4 both hold true. What is synthesized depends on the mercy of the simulator. It can lead to Synthesis-Simulation mismatches.
 If we used an IF condition here, due to priority logic, condition 4 would be ignored when condition 3 is met. However,in the CASE statement , even if the upper case is matched,all the cases are checked.So,if there is overlapping in cases,it poses a problem as the cases are not mutually exclusive. And we would get an unpredictable output.
 
-### Labs on incorrect IF and case constructs 
+***Labs on incorrect IF and case constructs*** 
 ---
 
 Below are the files titled incomp_if.v, incomp_if2.v and can be found in the directory verilog_files.
