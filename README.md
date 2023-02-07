@@ -917,6 +917,10 @@ the resulting gtkwaveform is shown below that shows an adder being simulated:
 
 
 
+# Day-7 Timing and constraints fundamentals
+----
+
+***Setup,Hold,Delay and Timing arcs***
 
 
 
