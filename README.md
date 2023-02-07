@@ -1,4 +1,54 @@
 **VSD Hardware Design Flow**
+
+
+
+  * [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
+
+* [Day -1  Introduction to verilog RTL design and Synthesis](#day--1--introduction-to-verilog-rtl-design-and-synthesis)
+
+   * [<strong>Introduction to opensource simulator iverilog</strong>](#introduction-to-opensource-simulator-iverilog)
+
+   * [<strong>Labs using iverilog and gtkwave</strong>](#labs-using-iverilog-and-gtkwave)
+
+   * [<strong>Labs using yosys and sky130 PDKs</strong>](#labs-using-yosys-and-sky130-pdks)
+
+* [Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles](#day-2-timing-libs-heirarchial-vs-flat-synthesis-and-efficient-flop-coding-styles)
+
+   * [<em><strong>Introduction to Timing.lib</strong></em>](#introduction-to-timinglib)
+
+   * [<em><strong>HEIRARCHIAL VS FLAT SYNTHESIS</strong></em>](#heirarchial-vs-flat-synthesis)
+
+   * [<strong>Sub-Module Level Synthesis And Necessity</strong>](#sub-module-level-synthesis-and-necessity)
+
+   * [<em><strong>Asynchronous And Synchronous Resets</strong></em>](#asynchronous-and-synchronous-resets)
+
+      * [Optimisations](#optimisations)
+
+* [Day-3 : Combinational and Sequential optimisations](#day-3--combinational-and-sequential-optimisations)
+
+   * [<em><strong>Introduction to logic optimisations</strong></em>](#introduction-to-logic-optimisations)
+
+   * [<strong>Combinational Logic Optimisations</strong>](#combinational-logic-optimisations)
+
+   * [<strong>Sequential Logic Optimisations</strong>](#sequential-logic-optimisations)
+
+* [Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch](#day-4--gate-level-simulations-non-blocking-and-blocking-assignments-synthesis-simulation-mismatch)
+
+   * [<em><strong>Introduction to gate level simulations</strong></em>](#introduction-to-gate-level-simulations)
+
+   * [Synthesis Simulaiton mismatches](#synthesis-simulaiton-mismatches)
+
+   * [<em><strong>Labs on GLS and Synthesis-Simulation mismatch</strong></em>](#labs-on-gls-and-synthesis-simulation-mismatch)
+
+* [Day-5 if,case,for loop and for generate](#day-5-ifcasefor-loop-and-for-generate)
+
+   * [<strong>if construct</strong>](#if-construct)
+
+   * [<em><strong>Labs on incorrect IF and case constructs</strong></em>](#labs-on-incorrect-if-and-case-constructs)
+
+   * [<strong>Introduction to Looping constructs</strong>](#introduction-to-looping-constructs)
+
+
 -------------------------------------------------------
 # Day-0 **Tool Installations**
 -------------------------------------------------------
