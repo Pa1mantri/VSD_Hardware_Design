@@ -919,6 +919,16 @@ the resulting gtkwaveform is shown below that shows an adder being simulated:
 
 # Day-7 Timing and constraints fundamentals
 ----
+**what are constraints?**
+
+A RTL code can be synthesized in multiple ways using the standard cells present. A constraint file guides the synthesizer to select the appropriate library cells to meet the timing and performance requirements
+
+**what is SDC?**
+
+SDC stands for Synopsys Design Constraints which has become an industry standard for various design tools to specify the design constraints during synthesis.
+
+During synthesis a constraint file is provided along with the RTL and .lib to help the synthesis tool decide what flavour of the cell to use to optimize the design for performance and area.
+
 
 ***Setup,Hold,Delay and Timing arcs***
 
