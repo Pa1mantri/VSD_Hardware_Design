@@ -239,7 +239,7 @@ write_verilog -noattr good_mux_netlist.v
 
 # Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles
 ---- 
-***Introduction to Timing.lib***
+**Introduction to Timing.lib**
 ----
 The library that is said to have a collection of all the standard cells along with their different flavors. We begin by understanding the name of the library. To look into the library,we use the gvim command  
 
@@ -280,7 +280,7 @@ We can see in the GVIM window above that there are two input for And gate, and t
 
 On comparison we see that the and gate "and2_4" has more area as compared to the and gate "and2_2" which in turn has more area with the and gate "and2_0". It is thus evident that and2_4 employs wider transistors. These are the different flavours of the same and gate. And and2_4 being the widest also has large leakage power values as well as large area. But it will have small delay values as it is faster.
 
-***HEIRARCHIAL VS FLAT SYNTHESIS*** 
+**Heirarchical VS Flat Synthesis** 
 ----
 While syntheisizing the RTL design in which multiple modules are present, the synthesis can be done in two forms.
 
@@ -304,7 +304,7 @@ When we use flatten to generate a flat netlist. Here there are no instances of U
 
 <img width="867" alt="heirarchial_flat-4" src="https://user-images.githubusercontent.com/114488271/205282772-ee1865e1-dd2c-410a-acac-ebc2eef0c1dc.png">
 
-***Sub-Module Level Synthesis And Necessity***
+**Sub-Module Level Synthesis And Necessity**
 ----
 Need for sub-module synthesis
 
@@ -327,7 +327,7 @@ synth -top sub_module1
 
 In the synthesis report,it inferring only 1 AND gate.
 
-***Asynchronous And Synchronous Resets*** 
+**Asynchronous And Synchronous Resets** 
 ----  
 Asynchronous reset: this reset signal does not wait for a clock .The moment asynchronous reset signal is received output queue becomes 0 irrespective of the clock.
 
@@ -344,7 +344,7 @@ Asynchronous reset Synthesis Implementation results
 <img width="875" alt="async_res_implementaion" src="https://user-images.githubusercontent.com/114488271/205282741-ebb0eb31-146c-46ee-ae86-63db8439c2f7.png">
 
 
-***Optimisations***
+**Optimisations**
 ----  
 Let's Consider the following two cases for designs where 
 1.3 bit input is multiplied by 2 and the output is a 4 bit value.
@@ -366,7 +366,7 @@ On synthesizing the netlist and look at its graphical realisation , we will see 
 
 # Day-3 : Combinational and Sequential optimisations
 ----
-***Introduction to logic optimisations***
+**Introduction to logic optimisations**
 ----
 Inorder to produce a digital circuit design which is optimised interms of area and power, the simulator performs many types of optimisations on the combinational and sequential circuits.  
 
@@ -506,7 +506,7 @@ Synthesised ouput of counter_opt2.v
 
 # Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch
 ---
-***Introduction to gate level simulations***  
+**Introduction to gate level simulations**  
 ---
 We validate our RTL design by providing stimulus to the testbench and check whether it meets our specifications earlier we were running the test bench with the RTL code as our design under test .
 But now under GLS ,we apply netlist to the testbench as design under test . What We did at the behavioral level in the RTL code got transformed to the net list in terms of the standard cells present in the library. So,netlist is logically same as the RTL code. They both have the same inputs and outputs so the netlist should seamlessly fit in the place of the RTL code. We put the netlist in place of the RTL file and run the simulation with the test bench.
@@ -565,7 +565,7 @@ We enter into the loop whenever any of the inputs a b or C changes but Y is assi
 
 Therefore ,while using blocking statements in this case,we should evaluate Q0 first and then Y so that Y takes on the updated values of Qo. Although both the circuits on synthesis give the same digital circuit comprising of AND, OR gates. But on simulation we get different behaviours.
 
-***Labs on GLS and Synthesis-Simulation mismatch***
+**Labs on GLS and Synthesis-Simulation mismatch**
 ---
 
 <img width="803" alt="Screenshot_20221204_065205" src="https://user-images.githubusercontent.com/114488271/205918717-de1231f9-bba6-4df2-8d36-3c9dce13de69.png">
@@ -775,7 +775,7 @@ end
 In the above code block ,2'b1? specifies that the corresponding bit can be either be 0 or 1. This means when the sel input is holding a value 3 i.e 2'b11, cases 3 and 4 both hold true. What is synthesized depends on the mercy of the simulator. It can lead to Synthesis-Simulation mismatches.
 If we used an IF condition here, due to priority logic, condition 4 would be ignored when condition 3 is met. However,in the CASE statement , even if the upper case is matched,all the cases are checked.So,if there is overlapping in cases,it poses a problem as the cases are not mutually exclusive. And we would get an unpredictable output.
 
-***Labs on incorrect IF and case constructs*** 
+**Labs on incorrect IF and case constructs** 
 ---
 
 Below are the files titled incomp_if.v, incomp_if2.v and can be found in the directory verilog_files.
@@ -936,7 +936,7 @@ During synthesis a constraint file is provided along with the RTL and .lib to he
 <img width="652" alt="Screenshot_20230209_111441" src="https://user-images.githubusercontent.com/114488271/217742867-4512500d-eb48-4692-8b12-962f7b1a4a2c.png">
 
 
-***Static timing analysis***
+**Static timing analysis**         
 
 * Setup Time Requirement(Max Delay)
  
@@ -964,7 +964,7 @@ Parameters affecting the delay
 
 ----
 
-***Timing Arcs***
+**Timing Arcs**   
 
 For a COMBINATIONAL CELL, delay information from every input pin to output pin which it can control is present in timing arc.
 
@@ -974,7 +974,13 @@ For a SEQUENTIAL CELL
 * Delay from clk to Q or D to Q for Dlatch
 * Setup and Hold times
 
+<img width="877" alt="Screenshot_20230105_050118" src="https://user-images.githubusercontent.com/114488271/217803020-7c36a23b-87ea-42fd-875b-f4260f8e9026.png">
+
 > setup and hold times are calculated around the sampling points.
+
+For a positive level latch setup and hold times are calculated at the negedge of the clock. Similarly for a negative level latch setup and hold times are calculated at the positive edge of the clock( positive edge is where the data is sampled).
+
+<img width="678" alt="Screenshot_20230209_050759" src="https://user-images.githubusercontent.com/114488271/217802980-7296bd6c-5c3e-483d-81f7-7fbe0402e4ab.png">
 
 
 
