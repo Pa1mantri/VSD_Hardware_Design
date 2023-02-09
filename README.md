@@ -1,8 +1,6 @@
 **VSD Hardware Design Flow**
 
-
-
- * [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
+* [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
 
 * [Day -1  Introduction to verilog RTL design and Synthesis](#day--1--introduction-to-verilog-rtl-design-and-synthesis)
 
@@ -14,19 +12,19 @@
 
 * [Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles](#day-2-timing-libs-heirarchial-vs-flat-synthesis-and-efficient-flop-coding-styles)
 
-   * [<em><strong>Introduction to Timing.lib</strong></em>](#introduction-to-timinglib)
+   * [<strong>Introduction to Timing.lib</strong>](#introduction-to-timinglib)
 
-   * [<em><strong>HEIRARCHIAL VS FLAT SYNTHESIS</strong></em>](#heirarchial-vs-flat-synthesis)
+   * [<strong>Heirarchical VS Flat Synthesis</strong>](#heirarchical-vs-flat-synthesis)
 
-   * [<em><strong>Sub-Module Level Synthesis And Necessity</strong></em>](#sub-module-level-synthesis-and-necessity)
+   * [<strong>Sub-Module Level Synthesis And Necessity</strong>](#sub-module-level-synthesis-and-necessity)
 
-   * [<em><strong>Asynchronous And Synchronous Resets</strong></em>](#asynchronous-and-synchronous-resets)
+   * [<strong>Asynchronous And Synchronous Resets</strong>](#asynchronous-and-synchronous-resets)
 
-   * [<em><strong>Optimisations</strong></em>](#optimisations)
+   * [<strong>Optimisations</strong>](#optimisations)
 
 * [Day-3 : Combinational and Sequential optimisations](#day-3--combinational-and-sequential-optimisations)
 
-   * [<em><strong>Introduction to logic optimisations</strong></em>](#introduction-to-logic-optimisations)
+   * [<strong>Introduction to logic optimisations</strong>](#introduction-to-logic-optimisations)
 
    * [<strong>Combinational Logic Optimisations</strong>](#combinational-logic-optimisations)
 
@@ -34,21 +32,28 @@
 
 * [Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch](#day-4--gate-level-simulations-non-blocking-and-blocking-assignments-synthesis-simulation-mismatch)
 
-   * [<em><strong>Introduction to gate level simulations</strong></em>](#introduction-to-gate-level-simulations)
+   * [<strong>Introduction to gate level simulations</strong>](#introduction-to-gate-level-simulations)
 
-   * [Synthesis Simulaiton mismatches](#synthesis-simulaiton-mismatches)
+   * [<strong>Synthesis Simulaiton mismatches</strong>](#synthesis-simulaiton-mismatches)
 
-   * [<em><strong>Labs on GLS and Synthesis-Simulation mismatch</strong></em>](#labs-on-gls-and-synthesis-simulation-mismatch)
+   * [<strong>Labs on GLS and Synthesis-Simulation mismatch</strong>](#labs-on-gls-and-synthesis-simulation-mismatch)
 
 * [Day-5 if,case,for loop and for generate](#day-5-ifcasefor-loop-and-for-generate)
 
    * [<strong>if construct</strong>](#if-construct)
 
-   * [<em><strong>Labs on incorrect IF and case constructs</strong></em>](#labs-on-incorrect-if-and-case-constructs)
+   * [<strong>Labs on incorrect IF and case constructs</strong>](#labs-on-incorrect-if-and-case-constructs)
 
    * [<strong>Introduction to Looping constructs</strong>](#introduction-to-looping-constructs)
 
 * [Day-7 Timing and constraints fundamentals](#day-7-timing-and-constraints-fundamentals)
+
+   * [<strong>Static Timing Analysis</strong>](#static-timing-analysis)
+
+   * [<strong>Timing Arcs</strong>](#timing-arcs)
+
+   * [<strong>Understanding Timing paths and IO Modelling</strong>](#understanding-timing-paths-and-io-modelling)
+
 
 
 
