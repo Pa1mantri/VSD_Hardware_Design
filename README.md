@@ -2,7 +2,7 @@
 
 
 
-  * [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
+ * [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
 
 * [Day -1  Introduction to verilog RTL design and Synthesis](#day--1--introduction-to-verilog-rtl-design-and-synthesis)
 
@@ -18,11 +18,11 @@
 
    * [<em><strong>HEIRARCHIAL VS FLAT SYNTHESIS</strong></em>](#heirarchial-vs-flat-synthesis)
 
-   * [<strong>Sub-Module Level Synthesis And Necessity</strong>](#sub-module-level-synthesis-and-necessity)
+   * [<em><strong>Sub-Module Level Synthesis And Necessity</strong></em>](#sub-module-level-synthesis-and-necessity)
 
    * [<em><strong>Asynchronous And Synchronous Resets</strong></em>](#asynchronous-and-synchronous-resets)
 
-      * [Optimisations](#optimisations)
+   * [<em><strong>Optimisations</strong></em>](#optimisations)
 
 * [Day-3 : Combinational and Sequential optimisations](#day-3--combinational-and-sequential-optimisations)
 
@@ -47,6 +47,9 @@
    * [<em><strong>Labs on incorrect IF and case constructs</strong></em>](#labs-on-incorrect-if-and-case-constructs)
 
    * [<strong>Introduction to Looping constructs</strong>](#introduction-to-looping-constructs)
+
+* [Day-7 Timing and constraints fundamentals](#day-7-timing-and-constraints-fundamentals)
+
 
 
 -------------------------------------------------------
