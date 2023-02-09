@@ -936,7 +936,7 @@ During synthesis a constraint file is provided along with the RTL and .lib to he
 <img width="652" alt="Screenshot_20230209_111441" src="https://user-images.githubusercontent.com/114488271/217742867-4512500d-eb48-4692-8b12-962f7b1a4a2c.png">
 
 
-**Static timing analysis**         
+**Static Timing Analysis**           
 
 * Setup Time Requirement(Max Delay)
  
@@ -964,7 +964,7 @@ Parameters affecting the delay
 
 ----
 
-**Timing Arcs**   
+**Timing Arcs**     
 
 For a COMBINATIONAL CELL, delay information from every input pin to output pin which it can control is present in timing arc.
 
@@ -982,6 +982,34 @@ For a positive level latch setup and hold times are calculated at the negedge of
 
 <img width="678" alt="Screenshot_20230209_050759" src="https://user-images.githubusercontent.com/114488271/217802980-7296bd6c-5c3e-483d-81f7-7fbe0402e4ab.png">
 
+**understanding Timing paths and IO Modelling**  
+
+There are different paths in a circuit which determine the critical path of a circuit. The critical path is the path with the highest delay (slowest path) and that  determines the operating frequency of the circuit.
+
+Starting points for the paths are:
+
+- Input Ports
+- Clk pins of Registers
+
+End points of a timing path are:
+  
+- Output ports
+- D pin of DFF/DLAT
+
+This gives us 3 types of paths:
+
+- ```Reg2Reg Timing path```
+  - Clk pin to D pin
+  - Constrained by the clock
+  
+
+- ```IO Timing Path```
+  - Clk to Output or Input to D
+  - ```Reg2Out``` path constrained by external delay, output load and clock period.
+  - ```In2Reg``` path constrained by input external delay, Input transition and clock period.
+  - Modeling the above 2 paths is referred to as IO delay Modeling and has to be constrained for both max and min delay.
+
+- ```IO timing Path``` - Input to Output ports.
 
 
 
