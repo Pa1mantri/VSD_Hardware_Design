@@ -952,6 +952,8 @@ During synthesis a constraint file is provided along with the RTL and .lib to he
 This defines the constraints given by the HOLD window and this occurs usually when we delay the clock (with delay circuits in red) so we can meet a fixed COMBI delay with a slower clock (e.g TCOMBI = 8ns , Tclk=5ns)
 THOLD_B+ TPUSH < TCQ_A+TCOMBI ; TPUSH is the time inserted by the delay circuits.
 
+<img width="492" alt="Screenshot_20230209_034157" src="https://user-images.githubusercontent.com/114488271/217794048-2ca4f037-f661-4652-bc27-8567718d2402.png">
+
 Parameters affecting the delay
 
 * Higher inflow of current(input transition) corresponds to lower delay.
