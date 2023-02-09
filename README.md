@@ -519,7 +519,7 @@ In GLS using iverilog flow, the design is a netlist which is given to Iverilog s
 
  >The reason for the functional validation of netlist eventhough the netlist is the true representation of the RTL code is "Synthesis-Simulation mismatch."
  
- Synthesis Simulaiton mismatches
+ **Synthesis Simulaiton mismatches**
  ---
  * Missing sensitivity list  
  * Blocking and Non-Blocking statements
@@ -984,7 +984,7 @@ For a positive level latch setup and hold times are calculated at the negedge of
 
 <img width="678" alt="Screenshot_20230209_050759" src="https://user-images.githubusercontent.com/114488271/217802980-7296bd6c-5c3e-483d-81f7-7fbe0402e4ab.png">
 
-**understanding Timing paths and IO Modelling**  
+**Understanding Timing paths and IO Modelling**  
 ----
 
 There are different paths in a circuit which determine the critical path of a circuit. The critical path is the path with the highest delay (slowest path) and that  determines the operating frequency of the circuit.
