@@ -340,7 +340,7 @@ Asynchronous reset Synthesis Implementation results
 
 <img width="875" alt="async_res_implementaion" src="https://user-images.githubusercontent.com/114488271/205282741-ebb0eb31-146c-46ee-ae86-63db8439c2f7.png">
 
-### Optimisations
+***Optimisations***
 ----  
 Let's Consider the following two cases for designs where 
 1.3 bit input is multiplied by 2 and the output is a 4 bit value.
@@ -925,12 +925,22 @@ A RTL code can be synthesized in multiple ways using the standard cells present.
 
 **what is SDC?**
 
-SDC stands for Synopsys Design Constraints which has become an industry standard for various design tools to specify the design constraints during synthesis.
+SDC stands for Synopsys Design Constraints which has become an industry standard for various design tools to specify the design constraints to enable appropriate optimisation suitable for acheiving the best implementation during synthesis.
 
 During synthesis a constraint file is provided along with the RTL and .lib to help the synthesis tool decide what flavour of the cell to use to optimize the design for performance and area.
 
 
-***Setup,Hold,Delay and Timing arcs***
+***Static timing analysis***
+
+ *Setup Time Requirement(Max Delay)
+ 
+ Time required to meet the setup time of the clock.
+ 
+ *Hold Time Requirement(Min Delay)
+ 
+ Time required to meet the hold time requirement of the flop.
+
+
 
 
 
