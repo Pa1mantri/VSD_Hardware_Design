@@ -937,9 +937,11 @@ During synthesis a constraint file is provided along with the RTL and .lib to he
 
 * Setup Time Requirement(Max Delay)
  
- Time required to meet the setup time of the clock.
+ Time required to meet the setup time of the clock. 
  
  <img width="162" alt="Screenshot_20230209_124122" src="https://user-images.githubusercontent.com/114488271/217742862-b69051b2-968e-4075-a0d4-aac7750d5f6a.png">
+ 
+ Let say the design runs at 200MHZ i.e;fclk = 5ns so the maximum combinational delay must be TCOMBI < 5-TCQA-Tsetup_B.
  
 * Hold Time Requirement(Min Delay)
  
@@ -947,11 +949,25 @@ During synthesis a constraint file is provided along with the RTL and .lib to he
 
 <img width="461" alt="Screenshot_20230209_124109" src="https://user-images.githubusercontent.com/114488271/217742871-fa14d200-057b-4850-8f23-6b3464b322d1.png">
 
+This defines the constraints given by the HOLD window and this occurs usually when we delay the clock (with delay circuits in red) so we can meet a fixed COMBI delay with a slower clock (e.g TCOMBI = 8ns , Tclk=5ns)
+THOLD_B+ TPUSH < TCQ_A+TCOMBI ; TPUSH is the time inserted by the delay circuits.
+
+Parameters affecting the delay
+
+* Higher inflow of current(input transition) corresponds to lower delay.
+* Higher load capacitance(output load) higher the delay.
+
 ----
 
 ***Timing Arcs***
 
+For a COMBINATIONAL CELL, delay information from every input pin to output pin which it can control is present in timing arc.
 
+For a SEQUENTIAL CELL
+
+* Delay from clk to Q for DFlop
+* Delay from clk to Q or D to Q for Dlatch
+* Setup and Hold times
 
 <img width="883" alt="Screenshot_20230105_050118" src="https://user-images.githubusercontent.com/114488271/217742919-d62aa58f-1010-4af4-a8ac-afc48da9b2bb.png">
 
