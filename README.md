@@ -301,7 +301,7 @@ When we use flatten to generate a flat netlist. Here there are no instances of U
 
 <img width="867" alt="heirarchial_flat-4" src="https://user-images.githubusercontent.com/114488271/205282772-ee1865e1-dd2c-410a-acac-ebc2eef0c1dc.png">
 
-**Sub-Module Level Synthesis And Necessity**
+***Sub-Module Level Synthesis And Necessity***
 ----
 Need for sub-module synthesis
 
@@ -339,6 +339,7 @@ GTKWAVE RTL Simulation and Observations :
 Asynchronous reset Synthesis Implementation results
 
 <img width="875" alt="async_res_implementaion" src="https://user-images.githubusercontent.com/114488271/205282741-ebb0eb31-146c-46ee-ae86-63db8439c2f7.png">
+
 
 ***Optimisations***
 ----  
@@ -929,16 +930,30 @@ SDC stands for Synopsys Design Constraints which has become an industry standard
 
 During synthesis a constraint file is provided along with the RTL and .lib to help the synthesis tool decide what flavour of the cell to use to optimize the design for performance and area.
 
+<img width="652" alt="Screenshot_20230209_111441" src="https://user-images.githubusercontent.com/114488271/217742867-4512500d-eb48-4692-8b12-962f7b1a4a2c.png">
+
 
 ***Static timing analysis***
 
- *Setup Time Requirement(Max Delay)
+* Setup Time Requirement(Max Delay)
  
  Time required to meet the setup time of the clock.
  
- *Hold Time Requirement(Min Delay)
+ <img width="162" alt="Screenshot_20230209_124122" src="https://user-images.githubusercontent.com/114488271/217742862-b69051b2-968e-4075-a0d4-aac7750d5f6a.png">
+ 
+* Hold Time Requirement(Min Delay)
  
  Time required to meet the hold time requirement of the flop.
+
+<img width="461" alt="Screenshot_20230209_124109" src="https://user-images.githubusercontent.com/114488271/217742871-fa14d200-057b-4850-8f23-6b3464b322d1.png">
+
+----
+
+***Timing Arcs***
+
+
+
+<img width="883" alt="Screenshot_20230105_050118" src="https://user-images.githubusercontent.com/114488271/217742919-d62aa58f-1010-4af4-a8ac-afc48da9b2bb.png">
 
 
 
