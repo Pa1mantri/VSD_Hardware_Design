@@ -941,7 +941,7 @@ During synthesis a constraint file is provided along with the RTL and .lib to he
  
  <img width="162" alt="Screenshot_20230209_124122" src="https://user-images.githubusercontent.com/114488271/217742862-b69051b2-968e-4075-a0d4-aac7750d5f6a.png">
  
- Let say the design runs at 200MHZ i.e;fclk = 5ns so the maximum combinational delay must be TCOMBI < 5-TCQA-Tsetup_B.
+ Let say the design runs at 200MHZ i.e; Tclk = 5ns so the maximum combinational delay must be TCOMBI < 5-TCQA-Tsetup_B.
  
 * Hold Time Requirement(Min Delay)
  
