@@ -974,7 +974,9 @@ For a SEQUENTIAL CELL
 * Delay from clk to Q or D to Q for Dlatch
 * Setup and Hold times
 
-<img width="883" alt="Screenshot_20230105_050118" src="https://user-images.githubusercontent.com/114488271/217742919-d62aa58f-1010-4af4-a8ac-afc48da9b2bb.png">
+> setup and hold times are calculated around the sampling points.
+
+
 
 
 
