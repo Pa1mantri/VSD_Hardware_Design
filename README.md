@@ -1033,10 +1033,61 @@ The above parameters are modeled inside the library based on the technology beha
 
 <img width="654" alt="Screenshot_20221201_041614" src="https://user-images.githubusercontent.com/114488271/205282809-b3cf42ec-1c1c-4f47-9d8c-d20b3e0e0dc4.png">
 
-Technology: CMOS
-default_max_transition: 1.500 - it is the max capacitance in defined unit (usually pF) allowed for the load of a gate
-default_operating_conditions : tt_025c_1v80 process, temperature and voltage respectively.
-delay_model : table_lookup - it is a table format for 2 parameters and during the simulation the tool will use it to get interpolated values for each specific case.
+  - Technology: CMOS
+  - default_max_transition: 1.500 - it is the max capacitance in defined unit (usually pF) allowed for the load of a gate
+  - default_operating_conditions : tt_025c_1v80 process, temperature and voltage respectively.
+  - delay_model : table_lookup - it is a table format for 2 parameters and during the simulation the tool will use it to get interpolated values for each specific       case.
+  - Timing sense: For each cell we get whether it is positive unate or negative unate or non-unate. Depending upon this unnateness, DC tool will know what               transition at the input to propogate what transition at output.
+    
+    ```For AND gate```
+    
+    - timing_sense : positive unate 
+    - timing_type  : combinational
+                 
+    ```For sequential register```
+    
+    - timing_sense : non-unate
+    - timing_type  : falling edge
+
+<img width="558" alt="Screenshot_20230210_040326" src="https://user-images.githubusercontent.com/114488271/218070694-1c89dc9a-5a5f-47e8-a4e8-826e7e9c1823.png">
+
+**Clock Tree Modelling**
+----
+
+Due to the practical floorplaning and clock tree synthesis of the physical design there exist routing delays and not all registers receive the clock at the same time.
+
+Jitter refers to the inherent variations that exist in clock sources due to stochastic effects.
+
+The clock edge does not have a non-zero rise time and arrives in a small window period. ie Tclk ± Delta
+
+Hence for setup time analysis our equation becomes
+Tclk-Tjitter> TCQ_A+TCOMBI+TSETUP_B
+
+----
+
+*Clock Skew*
+
+Difference in clock periods due to generated paths during CTS refers to as clock skew and can result in timing failures post clock tree synthesis.
+Tclk-Tskew> TCQ_A+TCOMBI+TSETUP_B
+
+----
+
+*Factors for clock modelling*
+
+- Period
+- Source Latency: Time taken by clock source to generate clock
+- Clock Network Latency: Time taken by clock distribution network
+- Clock skew: clock path delay mismatches which causes difference in the arrial of clock.
+- Jitter: 
+  - Duty cycle jitter
+  - Period jitter
+
+These factors (Skew & Clock Network Latency) have to be accounted for before CTS and Post CTS the only uncertainty in clock is due to Jitter.
+
+**Writing Synopsys Design Constraints(SDC)**
+
+----
+
 
 
 
