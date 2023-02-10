@@ -1020,6 +1020,23 @@ This gives us 3 types of paths:
 - ```IO timing Path``` - Input to Output ports.
 
 
+<img width="659" alt="Screenshot_20230210_033259" src="https://user-images.githubusercontent.com/114488271/218063132-82863e7c-0636-4487-aceb-0582771c6b9f.png">
+
+In a common design usually the working frequency (Tclk) will be fixed to achieve a certain performance so the components (TCOMBI) will need to be optimized. The clock period will limit the delays in Reg2Reg Paths - so the synth tools will need to select proper technology cells from the library (.lib file contain TCQ, TSETUP/HOLD, TCOMBI_cell) to meet the clock period.
+
+- **Input/output External Delay** : Because for the external circuit elements we do not have control and we get also other influences like routing - we need to       define a   timing margin that will decrease our available timing for the "input/output circuit" . The Input/output External Delay is defined usually by standards   (e.g. SPI,   I2C etc.) or IO budgeting and this is given by the designer of the external circuitry organized usually in a module or IP.
+- **Input transition** Input transition/Output load are the information of the real behavior of the input/output logic signal due to parasitic elements:
+
+The above parameters are modeled inside the library based on the technology behavior.
+
+*Understanding contents in .lib file*:
+
+<img width="654" alt="Screenshot_20221201_041614" src="https://user-images.githubusercontent.com/114488271/205282809-b3cf42ec-1c1c-4f47-9d8c-d20b3e0e0dc4.png">
+
+Technology: CMOS
+default_max_transition: 1.500 - it is the max capacitance in defined unit (usually pF) allowed for the load of a gate
+default_operating_conditions : tt_025c_1v80 process, temperature and voltage respectively.
+delay_model : table_lookup - it is a table format for 2 parameters and during the simulation the tool will use it to get interpolated values for each specific case.
 
 
 
