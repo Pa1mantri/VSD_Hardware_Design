@@ -1022,6 +1022,8 @@ This gives us 3 types of paths:
 
 <img width="659" alt="Screenshot_20230210_033259" src="https://user-images.githubusercontent.com/114488271/218063132-82863e7c-0636-4487-aceb-0582771c6b9f.png">
 
+Based on the clock period the synthesizer decides the maximum possible combinational delay that meets the STA requirement.
+
 In a common design usually the working frequency (Tclk) will be fixed to achieve a certain performance so the components (TCOMBI) will need to be optimized. The clock period will limit the delays in Reg2Reg Paths - so the synth tools will need to select proper technology cells from the library (.lib file contain TCQ, TSETUP/HOLD, TCOMBI_cell) to meet the clock period.
 
 - **Input/output External Delay** : Because for the external circuit elements we do not have control and we get also other influences like routing - we need to       define a   timing margin that will decrease our available timing for the "input/output circuit" . The Input/output External Delay is defined usually by standards   (e.g. SPI,   I2C etc.) or IO budgeting and this is given by the designer of the external circuitry organized usually in a module or IP.
@@ -1087,6 +1089,33 @@ These factors (Skew & Clock Network Latency) have to be accounted for before CTS
 **Writing Synopsys Design Constraints(SDC)**
 
 ----
+
+Useful DC commands:
+
+**Querying command:**  ```get_*```
+
+Querying ports
+
+* ```get_ports clk```
+* ```get_ports *clk*``` Returns collection of ports whose name contains clk
+* ```get_ports *``` Returns all ports of the design
+* ```get_ports * - filter "direction == in"``` Return all ports with satisfites the filter condition direction==in
+* ```get_ports * - filter "direction == out"``` Return all output ports
+
+----
+
+Querying clocks
+
+* ```get_clocks *``` Returns all clocks in the design
+* ```get_clocks *clk*``` Returns all clocks with name clk in it
+* ```get_clocks * -filter "period>10"``` Returns all clocks with period greater than 10
+* ```get_clocks my_clk``` Lists all parameters of the clock.
+* ```get_attribute [get_clock my_clk] period``` Returns the period of clock
+* ```get_attribute [get_clock my_clk] is_generated``` Report if the clock has is_generated attribute
+
+
+
+
 
 
 
