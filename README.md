@@ -1113,18 +1113,42 @@ Querying clocks
 * ```get_attribute [get_clock my_clk] period``` Returns the period of clock
 * ```get_attribute [get_clock my_clk] is_generated``` Report if the clock has is_generated attribute
 
+<img width="635" alt="Screenshot 2023-03-03 182622" src="https://user-images.githubusercontent.com/114488271/222729589-13c7186d-938e-4661-bb94-f16f0189c71e.png">
+
 ----
 
 Creating Clocks
 
-```create_clock -name <clk_name> -per <time> [get_port <port_name>]``` clock is defined to a specific port
-```create_clock -name MY_CLK -per 5 [get_port clk]```
-``` set_clock_latency -time [get_clocks MY_CLK]```
+```create_clock -name <clk_name> -per <time> [get_port <port_name>]```clock is defined to a specific port       
+Example: create_clock -name MY_CLK -per 5 [get_port clk]    
+```set_clock_latency -time [get_clocks MY_CLK]```
 
+<img width="827" alt="Screenshot 2023-03-03 184241" src="https://user-images.githubusercontent.com/114488271/222729610-cc23b28c-f92a-4a3a-86d0-5767b516c105.png">
+<img width="813" alt="Screenshot 2023-03-03 184341" src="https://user-images.githubusercontent.com/114488271/222729635-39e8119f-0d71-4043-95d2-167c82e28827.png">
 
+----
 
+Input IO Modelling
 
+```
+>set_input_delay -max <time> -clock [get_clocks <clk_name>] [get_ports <port_name>] Eg:set_input_delay -max 5 -clock [get_clocks MY_CLK] [get_ports IN_*]     
+>set_input_delay -min <time> -clock [get_clocks <clk_name>] [get_ports <port_name>] 
+>set_input_transition -max <time> [get_ports <port_name>] Eg: set_input_transition -max 5 [get_ports IN_*]
+>set_input_transition -min <time> [get_ports <port_name>]   
 
+```
+
+output IO Modelling
+
+```
+>set_output_delay -max <time> -clock [get_clocks <clk_name>] [get_ports <port_name>] Eg:set_output_delay -max 5 -clock [get_clocks MY_CLK] [get_ports OUT_Y]     
+>set_output_delay -min <time> -clock [get_clocks <clk_name>] [get_ports <port_name>] 
+>set_output_load -max <cap_unit> [get_ports <port_name>] Eg: set_output_load -max 5 [get_ports OUT_Y]
+>set_output_load -min <cap_unit> [get_ports <port_name>]   
+
+```
+
+Pure combinational logic from input to output can be constrained using ```set_max_latency``` and ```virtual clock```
 
 
 
