@@ -1059,9 +1059,8 @@ Tclk-Tskew> TCQ_A+TCOMBI+TSETUP_B
 
 These factors (Skew & Clock Network Latency) have to be accounted for before CTS and Post CTS the only uncertainty in clock is due to Jitter.
 
-**Writing Synopsys Design Constraints(SDC)**
-
-----
+**Writing Synopsys Design Constraints(SDC)**      
+----    
 
 Useful DC commands:
 
