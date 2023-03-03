@@ -1113,6 +1113,17 @@ Querying clocks
 * ```get_attribute [get_clock my_clk] period``` Returns the period of clock
 * ```get_attribute [get_clock my_clk] is_generated``` Report if the clock has is_generated attribute
 
+----
+
+Creating Clocks
+
+```create_clock -name <clk_name> -per <time> [get_port <port_name>]``` clock is defined to a specific port
+```create_clock -name MY_CLK -per 5 [get_port clk]```
+``` set_clock_latency -time [get_clocks MY_CLK]```
+
+
+
+
 
 
 
