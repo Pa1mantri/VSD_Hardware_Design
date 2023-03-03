@@ -926,7 +926,7 @@ the resulting gtkwaveform is shown below that shows an adder being simulated:
 
 
 
-# Day-7 Timing and constraints fundamentals
+# Day-7 to 9 Timing and constraints fundamentals
 ----
 **what are constraints?**
 
@@ -1151,6 +1151,11 @@ output IO Modelling
 Pure combinational logic from input to output can be constrained using ```set_max_latency``` and ```virtual clock```
 
 
+# Day 10-12 Importance of MOSFETS in STA/EDA
+
+---
+
+**Fundamentals of N-mos and P-mos**
 
 
 
