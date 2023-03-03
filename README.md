@@ -28,6 +28,7 @@
    * [<strong>Timing Arcs</strong>](#timing-arcs)
    * [<strong>Understanding Timing paths and IO Modelling</strong>](#understanding-timing-paths-and-io-modelling)
    * [<strong>Clock Tree Modelling</strong>](#clock-tree-modelling)
+   * [<strong>Writing Synopsys Design Constraints(SDC)</strong>](#writing-synopsys-design-constraintssdc)
 * [Day 10-12 Importance of MOSFETS in STA/EDA](#day-10-12-importance-of-mosfets-in-staeda)
 
 -------------------------------------------------------
