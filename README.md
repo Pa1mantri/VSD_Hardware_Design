@@ -1151,6 +1151,12 @@ N-MOS
 <img width="948" alt="Screenshot 2023-03-07 184738" src="https://user-images.githubusercontent.com/114488271/223434411-a96710fa-012e-4177-ae80-349b1681cea1.png">
 
 
+**Basics of N-mos Drain current(id) and drain to source voltage(Vds)**
 
+----
+
+- Resistive Operation
+    - At Vgs>Vt condition with small Vds
+    - 
 
 
