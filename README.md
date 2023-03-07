@@ -1148,6 +1148,7 @@ N-MOS
   * Add Vsb voltage, addition potential is required for strong inversion.
   * ```Vto``` is the threshold voltage at Vsb=0, a function of manufactuting process.
 
+<img width="948" alt="Screenshot 2023-03-07 184738" src="https://user-images.githubusercontent.com/114488271/223434411-a96710fa-012e-4177-ae80-349b1681cea1.png">
 
 
 
