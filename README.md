@@ -1130,7 +1130,23 @@ Pure combinational logic from input to output can be constrained using ```set_ma
 
 **Fundamentals of N-mos and P-mos**
 
+----
 
+N-MOS
+
+* P type substrate, n+ Diffusion Regions
+* Isolation region(SiO2), PolySi or Metal Gate
+* 4-Terminal element, Gate,Source,Drain,Body
+* Threshold Voltage
+  * Threshold voltage is defined as the gate voltage at which significant current starts to flow from source to drain.
+  * Vgs=0,Vs=Vd=Vb=0, Substrate-source(B-S) and Substrate-Drain(B-D) form pn-junction diodes.Both junctions are off due to OV bias. Souce to Drain resistance is         high.
+  * Increasing Vgs starting with applying a small gate potential at gate terminal will repel postive charges in P-substrate forming a depletion region.
+  * As we increase the Vgs, depletion region width increases gradually. At one point the surface inverts into a n-type material.This phenomenon is called strong         inversion.
+  * Vgs Voltage at which the inversion happens, it is referred as Threshold voltage(Vt).
+  * Further increase in Vgs won't change the width of the depletion region,instead it attracts more electrons from adjacent n+ regions, leading to an increase in       channel width,forming a continuous channel from source to drain.
+  * Continuous n-channel formation from S-D, whose conductivity is modulated by 'Vgs'
+  * Add Vsb voltage, addition potential is required for strong inversion.
+  * ```Vto``` is the threshold voltage at Vsb=0, a function of manufactuting process.
 
 
 
