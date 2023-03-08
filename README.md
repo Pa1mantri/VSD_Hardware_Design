@@ -1168,5 +1168,9 @@ N-MOS
     - when (Vgs-Vt)>>Vd, Id ~= Kn *(Vgs-Vt)Vds , linear function of Vds.
     
 - Saturation Region   
-    - 
+    - Pinch off from ```(Vgs-Vds)<=Vt```,electron channel under the gate began to disappear
+    - In saturation channel voltage remains constant to (Vgs-Vt)
+        - Id(sat) = ```kn((Vgs-Vt)(Vgs-Vt)-((Vgs-Vt)**2)/2)==Kn/2*(Vgs-Vt)**2```
+        - Acts like a perfect current source as there is no dependency on Vds. In reality it is affected by Vds.
+        - Id(sat) = ```Kn/2((Vgs-Vt)**2)*(1+(lamda*Vds))```
 
