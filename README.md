@@ -1157,6 +1157,16 @@ N-MOS
 
 - Resistive Operation
     - At Vgs>Vt condition with small Vds
+    - Induced charge Qi is proportional to (Vgs-Vt)
+    - Induced charge at any point 'x' in the channel Qi(x) \propto	[(Vgs-Vx)-Vt]
+    - Currents in this mode of operation
+      - Drift current, due to potential difference
+      - Diffusion current, due to difference in carrier concentration
+    - Id = ``` Kn' (W/L) ((Vgs-Vt)*Vds-(Vds**2)/2) = Kn*((Vgs-Vt)*Vds-(Vds**2)/2)```
+      - Kn' = Transconductance parameter
+      - Kn = Kn'(W/L)
+    - when (Vgs-Vt)>>Vd, Id ~= Kn *(Vgs-Vt)Vds , linear function of Vds.
+    
+- Saturation Region   
     - 
-
 
