@@ -1151,6 +1151,50 @@ N-MOS
 <img width="948" alt="Screenshot 2023-03-07 184738" src="https://user-images.githubusercontent.com/114488271/223434411-a96710fa-012e-4177-ae80-349b1681cea1.png">
 
 
+Spice Simulation
+
+SPICE file:day1_nfet_idvds_L1p2_W1p8.spice
+
+````
+*Model Description
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+*Netlist Description
+
+
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=5 l=2
+
+R1 n1 in 55
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*simulation commands
+
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+
+.control
+
+run
+display
+setplot dc1
+.endc
+
+.end
+````
+
+SPICE NMOS Id-Vds Graph
+
+<img width="424" alt="Screenshot 2023-03-09 143031" src="https://user-images.githubusercontent.com/114488271/223989244-92f8bb94-913f-4fae-a088-4f25f8ba96cb.png">
+
+
 **Basics of N-mos Drain current(id) and drain to source voltage(Vds)**
 
 ----
@@ -1173,4 +1217,98 @@ N-MOS
         - Id(sat) = ```kn((Vgs-Vt)(Vgs-Vt)-((Vgs-Vt)**2)/2)==Kn/2*(Vgs-Vt)**2```
         - Acts like a perfect current source as there is no dependency on Vds. In reality it is affected by Vds.
         - Id(sat) = ```Kn/2((Vgs-Vt)**2)*(1+(lamda*Vds))```
+        
+- SPICE Simulation
+
+Spice file: day2_nfet_idvgs_L0p25_W0p375.spice
+
+````
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+*Netlist Description
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
+
+R1 n1 in 55
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*simulation commands
+
+.op
+.dc Vin 0 1.8 0.1 
+
+.control
+
+run
+display
+setplot dc1
+.endc
+
+.end
+
+````
+SPICE NMOS Id-Vgs Graph
+
+<img width="410" alt="Screenshot 2023-03-09 145103" src="https://user-images.githubusercontent.com/114488271/223989223-9cf7aab9-6fb0-461e-88d7-4b27df711ce1.png">
+
+Spice file:day2_nfet_idvds_L0p25_W0p375.spice
+
+````
+*Model Description
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+*Netlist Description
+
+
+
+XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
+
+R1 n1 in 55
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*simulation commands
+
+.op
+.dc Vdd 0 1.8 0.1 Vin 0 1.8 0.2
+
+.control
+
+run
+display
+setplot dc1
+.endc
+
+.end
+````
+SPICE NMOS ID-Vds Graph:
+
+<img width="409" alt="Screenshot 2023-03-09 145453" src="https://user-images.githubusercontent.com/114488271/223989239-c8b69af8-f673-4fcb-955b-2148df9c70c8.png">
+
+
+
+**Velocity Saturation**
+
+For lower nodes there is a fourth region of operation - velocity saturation. At lower electric fields the velocity tends to be linear, at higher field velocity tends to be constant because of scattering effects.
+
+Velocity saturation effect
+  - Long channel (>250nm)
+  - Short channel (<250nm)
+  - Id = ```Kn*((Vgt-Vmin)-((Vmin**2)/2)*(1+lamda*Vds)```
+  - Vmin = ```min(Vgt,Vds,Vd(sat))```
+  
+  ```Vdsat``` is the saturation voltage at which device velocity saturates and is independent of the Vgs and Vds. It is a technology parameter.
 
