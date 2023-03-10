@@ -1415,7 +1415,12 @@ run
 
 <img width="768" alt="Screenshot 2023-03-10 120808" src="https://user-images.githubusercontent.com/114488271/224242758-9ef6367f-e8a0-4917-9537-729a71bd6d97.png">
 
+````
+Rise-Delay = 0.33
+Fall-Delay = 0.33
+````
 
+**CMOS Noise Margin Robustness**
 
 
 
