@@ -1125,11 +1125,9 @@ Pure combinational logic from input to output can be constrained using ```set_ma
 
 
 # Day 10-12 Importance of MOSFETS in STA/EDA
-
 ----
 
 **Fundamentals of N-mos and P-mos**
-
 ----
 
 N-MOS
@@ -1196,7 +1194,6 @@ SPICE NMOS Id-Vds Graph
 
 
 **Basics of N-mos Drain current(id) and drain to source voltage(Vds)**
-
 ----
 
 - Resistive Operation
@@ -1301,7 +1298,7 @@ SPICE NMOS ID-Vds Graph:
 
 
 **Velocity Saturation**    
-
+----
 
 For lower nodes there is a fourth region of operation - velocity saturation. At lower electric fields the velocity tends to be linear, at higher field velocity tends to be constant because of scattering effects.
 
@@ -1317,7 +1314,7 @@ Velocity saturation effect
   
 
 **CMOS Voltage Transfer Characteristics(VTC)**         
-
+----
 
 Transistor 
   - switch off when |Vgs| < |Vt|
@@ -1370,6 +1367,7 @@ display
 <img width="731" alt="Screenshot 2023-03-10 120926" src="https://user-images.githubusercontent.com/114488271/224242786-f2c071fc-0dda-4454-81cb-f93ca51c3af2.png">
 
 **CMOS Switching Threshold and Dynamic Simulations**         
+----
 
 - Switching Threshold
     ```Vm```,Threshold voltge should be near the middle of the CMOS inverter characteristics.
@@ -1422,7 +1420,7 @@ Fall-Delay = 0.33
 ````
 
 **CMOS Noise Margin Robustness**        
-
+----
 
 
 
