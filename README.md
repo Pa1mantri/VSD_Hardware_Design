@@ -1,35 +1,76 @@
 **VSD Hardware Design Flow**
 
 * [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
+
 * [Day -1  Introduction to verilog RTL design and Synthesis](#day--1--introduction-to-verilog-rtl-design-and-synthesis)
+
    * [<strong>Introduction to opensource simulator iverilog</strong>](#introduction-to-opensource-simulator-iverilog)
+
    * [<strong>Labs using iverilog and gtkwave</strong>](#labs-using-iverilog-and-gtkwave)
+
    * [<strong>Labs using yosys and sky130 PDKs</strong>](#labs-using-yosys-and-sky130-pdks)
+
 * [Day-2 Timing Libs, Heirarchial vs Flat Synthesis And Efficient Flop Coding Styles](#day-2-timing-libs-heirarchial-vs-flat-synthesis-and-efficient-flop-coding-styles)
+
    * [<strong>Introduction to Timing.lib</strong>](#introduction-to-timinglib)
+
    * [<strong>Heirarchical VS Flat Synthesis</strong>](#heirarchical-vs-flat-synthesis)
+
    * [<strong>Sub-Module Level Synthesis And Necessity</strong>](#sub-module-level-synthesis-and-necessity)
+
    * [<strong>Asynchronous And Synchronous Resets</strong>](#asynchronous-and-synchronous-resets)
+
    * [<strong>Optimisations</strong>](#optimisations)
+
 * [Day-3 : Combinational and Sequential optimisations](#day-3--combinational-and-sequential-optimisations)
+
    * [<strong>Introduction to logic optimisations</strong>](#introduction-to-logic-optimisations)
+
    * [<strong>Combinational Logic Optimisations</strong>](#combinational-logic-optimisations)
+
    * [<strong>Sequential Logic Optimisations</strong>](#sequential-logic-optimisations)
+
 * [Day-4  Gate level simulations, Non blocking and blocking assignments, Synthesis-Simulation mismatch](#day-4--gate-level-simulations-non-blocking-and-blocking-assignments-synthesis-simulation-mismatch)
+
    * [<strong>Introduction to gate level simulations</strong>](#introduction-to-gate-level-simulations)
+
    * [<strong>Synthesis Simulaiton mismatches</strong>](#synthesis-simulaiton-mismatches)
+
    * [<strong>Labs on GLS and Synthesis-Simulation mismatch</strong>](#labs-on-gls-and-synthesis-simulation-mismatch)
+
 * [Day-5 if,case,for loop and for generate](#day-5-ifcasefor-loop-and-for-generate)
+
    * [<strong>if construct</strong>](#if-construct)
+
    * [<strong>Labs on incorrect IF and case constructs</strong>](#labs-on-incorrect-if-and-case-constructs)
+
    * [<strong>Introduction to Looping constructs</strong>](#introduction-to-looping-constructs)
+
 * [Day-7 to 9 Timing and constraints fundamentals](#day-7-to-9-timing-and-constraints-fundamentals)
+
    * [<strong>Static Timing Analysis</strong>](#static-timing-analysis)
+
    * [<strong>Timing Arcs</strong>](#timing-arcs)
+
    * [<strong>Understanding Timing paths and IO Modelling</strong>](#understanding-timing-paths-and-io-modelling)
+
    * [<strong>Clock Tree Modelling</strong>](#clock-tree-modelling)
+
    * [<strong>Writing Synopsys Design Constraints(SDC)</strong>](#writing-synopsys-design-constraintssdc)
+
 * [Day 10-12 Importance of MOSFETS in STA/EDA](#day-10-12-importance-of-mosfets-in-staeda)
+
+   * [<strong>Fundamentals of N-mos and P-mos</strong>](#fundamentals-of-n-mos-and-p-mos)
+
+   * [<strong>Basics of N-mos Drain current(id) and drain to source voltage(Vds)</strong>](#basics-of-n-mos-drain-currentid-and-drain-to-source-voltagevds)
+
+   * [<strong>Velocity Saturation</strong>](#velocity-saturation)
+
+   * [<strong>CMOS Voltage Transfer Characteristics(VTC)</strong>](#cmos-voltage-transfer-characteristicsvtc)
+
+   * [<strong>CMOS Switching Threshold and Dynamic Simulations</strong>](#cmos-switching-threshold-and-dynamic-simulations)
+
+   * [<strong>CMOS Noise Margin Robustness</strong>](#cmos-noise-margin-robustness)
 
 -------------------------------------------------------
 # Day-0 **Tool Installations**
