@@ -1310,12 +1310,112 @@ Velocity saturation effect
   - Id = ```Kn*((Vgt-Vmin)-((Vmin**2)/2)*(1+lamda*Vds)```
   - Vmin = ```min(Vgt,Vds,Vd(sat))```
   
+  <img width="611" alt="Screenshot 2023-03-09 162802" src="https://user-images.githubusercontent.com/114488271/224005023-8e228e45-5c15-421c-832f-18edc73fdf73.png">
+ 
   ```Vdsat``` is the saturation voltage at which device velocity saturates and is independent of the Vgs and Vds. It is a technology parameter.
   
-  <img width="611" alt="Screenshot 2023-03-09 162802" src="https://user-images.githubusercontent.com/114488271/224005023-8e228e45-5c15-421c-832f-18edc73fdf73.png">
-
 
 **CMOS Voltage Transfer Characteristics(VTC)**
+
+
+Transistor 
+  - switch off when |Vgs| < |Vt|
+  - switch on when  |Vgs| > |Vt|
+  
+Assume CMOS Inverter in 0-2v Range
+
+<img width="202" alt="Screenshot 2023-03-10 121140" src="https://user-images.githubusercontent.com/114488271/224242804-82e4c22f-300a-4d62-bb33-8704865f8cd9.png">
+
+
+ - Spice File: day3_inv_vtc_W0p084_W0n036.spice
+
+````
+
+*Model Description
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+*Netlist Description
+
+
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
+
+
+Cload out 0 50fF
+
+Vdd vdd 0 1.8V
+Vin in 0 1.8V
+
+*simulation commands
+
+.op
+
+.dc Vin 0 1.8 0.01
+
+.control
+run
+setplot dc1
+display
+.endc
+
+.end
+````
+
+<img width="731" alt="Screenshot 2023-03-10 120926" src="https://user-images.githubusercontent.com/114488271/224242786-f2c071fc-0dda-4454-81cb-f93ca51c3af2.png">
+
+**CMOS Switching Threshold and Dynamic Simulations**
+
+- Switching Threshold
+    ```Vm```,Threshold voltge should be near the middle of the CMOS inverter characteristics.
+    
+- Transition Delay
+    - Rise Delay, Input 0 and output 1
+    - Fall Delay, Input  1 and output 0
+    - PMOS (W/L) = 2.5(W/L)NMOS
+    
+
+Spice File: day3_inv_tran_W0p084_W0n036.spice
+
+````
+*Model Description
+.param temp=27
+
+
+*Including sky130 library files
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+
+*Netlist Description
+
+
+XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
+XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
+
+
+Cload out 0 50fF
+
+Vdd vdd 0 1.8V
+Vin in 0 PULSE(0V 1.8V 0 0.1ns 0.1ns 2ns 4ns)
+
+*simulation commands
+
+.tran 1n 10n
+
+.control
+run
+.endc
+
+.end
+````
+
+<img width="768" alt="Screenshot 2023-03-10 120808" src="https://user-images.githubusercontent.com/114488271/224242758-9ef6367f-e8a0-4917-9537-729a71bd6d97.png">
+
+
 
 
 
