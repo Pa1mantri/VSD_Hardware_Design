@@ -1315,3 +1315,8 @@ Velocity saturation effect
   <img width="611" alt="Screenshot 2023-03-09 162802" src="https://user-images.githubusercontent.com/114488271/224005023-8e228e45-5c15-421c-832f-18edc73fdf73.png">
 
 
+**CMOS Voltage Transfer Characteristics(VTC)**
+
+
+
+
