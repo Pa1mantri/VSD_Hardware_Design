@@ -73,7 +73,7 @@
    * [<strong>CMOS Noise Margin Robustness</strong>](#cmos-noise-margin-robustness)
 
 -------------------------------------------------------
-# Day-0 **Tool Installations**
+# Day-0 Tool Installations
 -------------------------------------------------------
 Environment: Windows-11 and Ubuntu-22.04
 Tool: ***Yosys***
