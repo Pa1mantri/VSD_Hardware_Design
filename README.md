@@ -1351,7 +1351,7 @@ Velocity saturation effect
   
   <img width="611" alt="Screenshot 2023-03-09 162802" src="https://user-images.githubusercontent.com/114488271/224005023-8e228e45-5c15-421c-832f-18edc73fdf73.png">
  
-  ```Vdsat``` is the saturation voltage at which device velocity saturates and is independent of the Vgs and Vds. It is a technology parameter.
+    ```Vdsat``` is the saturation voltage at which device velocity saturates and is independent of the Vgs and Vds. It is a technology parameter.
   
 
 **CMOS Voltage Transfer Characteristics(VTC)**         
@@ -1366,6 +1366,7 @@ Assume CMOS Inverter in 0-2v Range
 <img width="202" alt="Screenshot 2023-03-10 121140" src="https://user-images.githubusercontent.com/114488271/224242804-82e4c22f-300a-4d62-bb33-8704865f8cd9.png">
 
 
+ 
  - Spice File: day3_inv_vtc_W0p084_W0n084.spice
 
 ````
@@ -1405,9 +1406,10 @@ display
 
 ````
 
-VTC for identical W/L P/NMOS 
+VTC for identical (W/L) P/NMOS   
 
-_______________IMAGE_______________
+<img width="411" alt="Screenshot 2023-03-16 143922" src="https://user-images.githubusercontent.com/114488271/225570954-dde4d422-a21c-494c-be97-259e013765ee.png">
+
 
 
 **CMOS Switching Threshold and Dynamic Simulations**         
@@ -1463,7 +1465,6 @@ display
 
 VTC for balanced PMOS/NMOS driving strength.i.e (W/L)PMOS = 2.5* (W/L)NMOS
 
-<img width="731" alt="Screenshot 2023-03-10 120926" src="https://user-images.githubusercontent.com/114488271/224242786-f2c071fc-0dda-4454-81cb-f93ca51c3af2.png">
 
 
 
