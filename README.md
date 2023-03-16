@@ -1465,7 +1465,7 @@ display
 
 VTC for balanced PMOS/NMOS driving strength.i.e (W/L)PMOS = 2.5* (W/L)NMOS
 
-
+<img width="366" alt="Screenshot 2023-03-16 145818" src="https://user-images.githubusercontent.com/114488271/225574426-f86ad9cb-1c8b-4ee3-9f48-3ccd47f6e28c.png">
 
 
 Spice File: day3_inv_tran_W0p084_W0n036.spice
