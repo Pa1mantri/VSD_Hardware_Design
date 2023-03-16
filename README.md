@@ -1582,8 +1582,11 @@ plot dc1.out vs in dc2.out vs in dc3.out vs in dc4.out vs in dc5.out vs in dc6.o
 
 .end
 ````
+<img width="390" alt="Screenshot 2023-03-15 175722" src="https://user-images.githubusercontent.com/114488271/225541704-0f42b619-63c3-4350-9a50-9c60112e3506.png">
+<img width="309" alt="Screenshot 2023-03-15 175754" src="https://user-images.githubusercontent.com/114488271/225541721-eb3ecd59-7a6a-48a5-90fe-d56081803a43.png">
 
 | GAIN  | RATIO |
+| ----  | ----  |
 |dc1.out| 7.7141|
 |dc6.out| 9.1845|
 
