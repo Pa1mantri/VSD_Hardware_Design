@@ -1,6 +1,9 @@
 **VSD Hardware Design Flow**
 
-* [Day-0 <strong>Tool Installations</strong>](#day-0-tool-installations)
+Table of Contents
+=================
+
+* [Day-0 Tool Installations](#day-0-tool-installations)
 
 * [Day -1  Introduction to verilog RTL design and Synthesis](#day--1--introduction-to-verilog-rtl-design-and-synthesis)
 
@@ -58,7 +61,7 @@
 
    * [<strong>Writing Synopsys Design Constraints(SDC)</strong>](#writing-synopsys-design-constraintssdc)
 
-* [Day 10-12 Importance of MOSFETS in STA/EDA](#day-10-12-importance-of-mosfets-in-staeda)
+* [Day 10-15 Importance of MOSFETS in STA/EDA](#day-10-15-importance-of-mosfets-in-staeda)
 
    * [<strong>Fundamentals of N-mos and P-mos</strong>](#fundamentals-of-n-mos-and-p-mos)
 
@@ -71,6 +74,8 @@
    * [<strong>CMOS Switching Threshold and Dynamic Simulations</strong>](#cmos-switching-threshold-and-dynamic-simulations)
 
    * [<strong>CMOS Noise Margin Robustness</strong>](#cmos-noise-margin-robustness)
+
+   * [<strong>CMOS Power Supply and Device Variation Robustness</strong>](#cmos-power-supply-and-device-variation-robustness)
 
 -------------------------------------------------------
 # Day-0 Tool Installations
