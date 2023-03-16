@@ -1165,7 +1165,7 @@ output IO Modelling
 Pure combinational logic from input to output can be constrained using ```set_max_latency``` and ```virtual clock```
 
 
-# Day 10-12 Importance of MOSFETS in STA/EDA
+# Day 10-15 Importance of MOSFETS in STA/EDA
 ----
 
 **Fundamentals of N-mos and P-mos**
@@ -1309,12 +1309,8 @@ Spice file:day2_nfet_idvds_L0p25_W0p375.spice
 
 *Netlist Description
 
-
-
 XM1 Vdd n1 0 0 sky130_fd_pr__nfet_01v8 w=0.39 l=0.15
-
 R1 n1 in 55
-
 Vdd vdd 0 1.8V
 Vin in 0 1.8V
 
@@ -1367,7 +1363,7 @@ Assume CMOS Inverter in 0-2v Range
 
 
  
- - Spice File: day3_inv_vtc_W0p084_W0n084.spice
+Spice File: day3_inv_vtc_W0p084_W0n084.spice
 
 ````
 *Model Description
@@ -1383,10 +1379,7 @@ Assume CMOS Inverter in 0-2v Range
 
 XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
 XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.84 l=0.15
-
-
 Cload out 0 50fF
-
 Vdd vdd 0 1.8V
 Vin in 0 1.8V
 
@@ -1441,10 +1434,7 @@ VTC for identical (W/L) P/NMOS
 
 XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
 XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
-
-
 Cload out 0 50fF
-
 Vdd vdd 0 1.8V
 Vin in 0 1.8V
 
@@ -1484,10 +1474,7 @@ Spice File: day3_inv_tran_W0p084_W0n036.spice
 
 XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=0.84 l=0.15
 XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
-
-
 Cload out 0 50fF
-
 Vdd vdd 0 1.8V
 Vin in 0 PULSE(0V 1.8V 0 0.1ns 0.1ns 2ns 4ns)
 
@@ -1534,10 +1521,7 @@ Fall-Delay = 0.33
 
 XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=1 l=0.15
 XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
-
-
 Cload out 0 50fF
-
 Vdd vdd 0 1.8V
 Vin in 0 1.8V
 
@@ -1606,10 +1590,7 @@ Spice file for supply variation: day5_inv_supplyvariation_Wp1_Wn036.spice
 
 XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=1 l=0.15
 XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.36 l=0.15
-
-
 Cload out 0 50fF
-
 Vdd vdd 0 1.8V
 Vin in 0 1.8V
 
@@ -1641,38 +1622,4 @@ plot dc1.out vs in dc2.out vs in dc3.out vs in dc4.out vs in dc5.out vs in dc6.o
 
 Spice file for device variation: 
 ````
-*Model Description
-.param temp=27
 
-
-*Including sky130 library files
-.lib "sky130_fd_pr/models/sky130.lib.spice" tt
-
-
-*Netlist Description
-
-
-XM1 out in vdd vdd sky130_fd_pr__pfet_01v8 w=7 l=0.15
-XM2 out in 0 0 sky130_fd_pr__nfet_01v8 w=0.42 l=0.15
-
-
-Cload out 0 50fF
-
-Vdd vdd 0 1.8V
-Vin in 0 1.8V
-
-*simulation commands
-
-.op
-
-.dc Vin 0 1.8 0.01
-
-.control
-run
-setplot dc1
-display
-.endc
-
-.end
-
-````
