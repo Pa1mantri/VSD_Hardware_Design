@@ -1,10 +1,9 @@
 
 ## Tcl file
-
-<img width="823" alt="Screenshot 2023-04-13 143648" src="https://user-images.githubusercontent.com/114488271/231715660-5ec03791-9717-4599-94d8-d63b180842a0.png">
+<img width="650" alt="Screenshot 2023-04-13 144628" src="https://user-images.githubusercontent.com/114488271/231718171-90d10f73-5f22-4cd7-beba-d50c01df17de.png">
 
 ## sdc file
-<img width="650" alt="Screenshot 2023-04-13 144628" src="https://user-images.githubusercontent.com/114488271/231715688-6bac2241-31f6-4b05-b6cf-8677fb03dbc5.png">
+<img width="638" alt="Screenshot 2023-04-13 143528" src="https://user-images.githubusercontent.com/114488271/231718011-fdf0f2b1-50e0-4a86-9605-cc1671f3dae2.png">
 
 ## reg2reg report
 <img width="507" alt="Screenshot 2023-04-13 143954" src="https://user-images.githubusercontent.com/114488271/231715662-bcdd6c36-e6a3-426a-8664-b6005226b8e7.png">
