@@ -9,4 +9,10 @@
 
 ## Floor plan
 
+<img width="811" alt="Screenshot 2023-05-13 044156" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3a94d87a-5887-482c-8f58-e32a669355fc">
+<img width="928" alt="Screenshot 2023-05-13 045557" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/31431308-32dd-47d7-b2c6-7db4f0c738fe">
+<img width="929" alt="def_file" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/6a00598f-4f4e-419c-a65d-872c67ff8596">
+<img width="933" alt="Screenshot 2023-05-13 070340" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d64c63e9-8192-4c6a-a999-01e0b7795f9e">
+<img width="927" alt="Screenshot 2023-05-13 071016" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/1f215733-ba75-46ad-bc2b-d7443cded787">
+<img width="929" alt="Screenshot 2023-05-13 071533" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/58310b47-10ed-4b70-aa24-1d06b8a1bae8">
 
