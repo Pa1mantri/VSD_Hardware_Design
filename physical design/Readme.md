@@ -30,12 +30,57 @@ Place and Route(PnR) is the core of any ASIC implemantation and OpenLane flow in
   * Streaming out the final GDSII layout file from the routed def (Magic).
 
 
+**OpenLane**
 
+OpenLane is an automated RTL to GDSII flow based on several components including OpenROAD, Yosys, Magic, Netgen, CVC, SPEF-Extractor, CU-GR, Klayout and a number of custom scripts for design exploration and optimization. The flow performs full ASIC implementation steps from RTL all the way down to GDSII.
 
+More about OpenLane at https://github.com/The-OpenROAD-Project/OpenLane
 
+**Installation Instructions**
 
+`` apt install -y build-essential python3 python3-venv python3-pip ``
 
+Docker installation process https://docs.docker.com/engine/install/ubuntu
 
+Follow these commands after moving to the home directory
+
+```
+$ git clone https://github.com/The-OPENROAD-Project/OpenLane.git
+$ cd OpenLane
+$ make
+$ make test
+```
+
+**Magic**
+
+Magic is a VLSI layout tool, widely cited as being the easiest tool to use for circuit layout.
+
+More about Magic at https://opencircuitdesign.com/magic/index.html
+
+Before installing Magic run the following commands to fulfill system requirements
+
+```
+$   sudo apt-get install m4
+$   sudo apt-get install tcsh
+$   sudo apt-get install csh
+$   sudo apt-get install libx11-dev
+$   sudo apt-get install tcl-dev tk-dev
+$   sudo apt-get install libcairo2-dev
+$   sudo apt-get install mesa-common-dev libglu1-mesa-dev
+$   sudo apt-get install libncurses-dev
+```
+To install Magic go to home directory
+
+```
+$ git clone https://github.com/RTimothyEdwards/magic
+$ cd magic
+$ ./configure
+$ make
+$ make install
+```
+type Magic in the terminal to check whether it is installed or not.
+
+**Customising the layout by including a custom made inverter cell (sky130_vsdinv) into our layout.**
 
 
 
