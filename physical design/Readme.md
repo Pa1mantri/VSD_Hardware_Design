@@ -1,3 +1,49 @@
+
+## PHYSICAL DESIGN ##
+
+**Overview Of Physical Design Flow**
+
+Place and Route(PnR) is the core of any ASIC implemantation and OpenLane flow integrates into it several key opensource tools which perform each of the respective stages of PnR. Below are the stages and respective tools that are called by OpenLane 
+
+* Synthesis
+  * Genetaring gate level netlist(Yosys)
+  * cell mapping (abc)
+  * Performing Pre-layout STA(OpenSTA)
+
+* Floorplanning
+  * Defining the core are for the macro as well as the cell sites and tracks (init_fp).
+  * Placing the macro input and output ports (io_placer).
+  * Generating the power distribution network (pdn).
+
+* Placement
+  * Global placement (RePLace).
+  * Detailed Placement : To legalise the globally placed components (OpenDP).
+
+* Cts
+  * Synthesising the clock tree (Triton CTS).
+
+* Routing 
+  * Global Routing to generate a guide file for detailed router (FastRoute).
+  * Detailed Routing (TritonRoute).
+
+* GDSII Generation
+  * Streaming out the final GDSII layout file from the routed def (Magic).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Intialising OpenLane and Running Synthesis
 
 <img width="632" alt="Screenshot 2023-05-13 033243" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/cd4b8083-0c6a-449a-8c96-4cb5260836df">
