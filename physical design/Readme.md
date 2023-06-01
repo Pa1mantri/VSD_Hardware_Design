@@ -94,6 +94,8 @@ type Magic in the terminal to check whether it is installed or not.
      
      ```magic -T sky130A.tech sky130_inv.mag &```
      
+     <img width="916" alt="Screenshot 2023-05-16 185842" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/5e14e6b5-625b-40b4-8447-5566f504b028">
+     
      *LEF or library exchange format:* A format that tells us about cell boundaries, VDD and GND lines. It contains no info about the logic of circuit and is also used to        protect the IP.
      
      SPICE extraction: Within the Magic environment, following commands are used in tkcon to achieve .mag to .spice extraction:
@@ -109,8 +111,12 @@ type Magic in the terminal to check whether it is installed or not.
      
      The tkcon command window of the port classification is shown in the image below:
      
+     <img width="534" alt="Screenshot 2023-05-18 075517" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/02a54d7b-e1f9-45c5-a357-deb8eba6db06">
      
      In the next step, use ```lef write``` command to write the LEF file with the same nomenclature as that of the layout .mag file. This will create a sky130_vsdinv.lef        file in the same folder.
+     
+     <img width="661" alt="Screenshot 2023-05-18 081847" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3ff48acb-3f77-4ce2-8388-224ce6efeacb">
+
 
 2. Including the SKY130_vsdinv cell in the design 
      
