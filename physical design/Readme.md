@@ -105,8 +105,27 @@ type Magic in the terminal to check whether it is installed or not.
      
      ```
      
+     The next step is setting ```port class``` and ```port use``` attributes. The "class" and "use" properties of the port have no internal meaning to magic but are used by      the LEF and      DEF format read and write routines, and match the LEF/DEF CLASS and USE properties for macro cell pins. These attributes are set in tkcon window            (after selecting each port on layout window. A keyboard shortcut would be,repeatedly pressing s till that port gets highlighed).
+     
+     The tkcon command window of the port classification is shown in the image below:
      
      
+     In the next step, use ```lef write``` command to write the LEF file with the same nomenclature as that of the layout .mag file. This will create a sky130_vsdinv.lef        file in the same folder.
+
+2. Including the SKY130_vsdinv cell in the design 
+     
+     Copy the lib files and the created sky130_vsinv.lef file to your design src directory.
+     
+3. Modify the config.json file by including the following lines.
+     
+     ```
+     "LIB_SYNTH":"dir::src/sky130_fd_sc_hd__typical.lib",
+     "LIB_FASTEST":"dir::src/sky130_fd_sc_hd__fast.lib",
+     "LIB_SLOWEST":"dir::src/sky130_fd_sc_hd__slow.lib",
+     "LIB_TYPICAL":"dir::src/sky130_fd_sc_hd__typical.lib",
+     "TEST_EXTERNAL_GLOB":"dir::src/*",
+     "SYNTH_DRIVING_CELL":"sky130_vsdinv"
+     ```
      
      
 
