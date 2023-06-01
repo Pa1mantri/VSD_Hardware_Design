@@ -120,7 +120,7 @@ type Magic in the terminal to check whether it is installed or not.
 
 2. Including the SKY130_vsdinv cell in the design 
      
-     Copy the lib files and the created sky130_vsinv.lef file to your design src directory.
+     Copy the lib files and the created sky130_vsdinv.lef file to your design src directory.
      
 3. Modify the config.json file by including the following lines.
      
@@ -134,17 +134,43 @@ type Magic in the terminal to check whether it is installed or not.
      ```
      
      
-
-
-
-
 ## Intialising OpenLane and Running Synthesis
 
-## Floor plan
+1.We run the OpenLane in the interactive mode to include our custom made lef file(SKY130_vsdinv.lef) before synthesis, so that the openlane recognises our lef files during   the flow for mapping.
 
-<img width="243" alt="Screenshot 2023-06-01 092820" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/4fd12558-0003-4cbe-87fa-149e4035e511">
-<img width="542" alt="Screenshot 2023-06-01 092956" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/e6cf1adf-8cf2-4083-88d9-97ec17465e50">
-<img width="561" alt="Screenshot 2023-06-01 093106" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/92c2f0a2-4d28-4621-8495-0c8cea6bdec1">
+  Commands to run the openlane in interactive mode
+  ```
+  cd OpenLane
+  make mount
+  ./flow.tcl -interactive
+  ```
+  <img width="464" alt="Screenshot 2023-06-01 092521" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdd119c0-6b92-4e18-a663-10d1bc456f33">
+
+2.Preparing the design and including the lef files:
+
+  ```
+  prep -design picorv32a
+  set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+  add_lefs -src $lefs
+  ```
+  <img width="463" alt="Screenshot 2023-06-01 092628" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f81acdd0-9dc5-47ea-93a5-f87b73e3e2a0">
+
+3.Synthesis: ```run_synthesis``` yosys translates RTL into circuit with generic components and abc maps the circuit to standard cells.
+  
+  <img width="466" alt="Screenshot 2023-06-01 092704" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/6fd10ac3-39d3-49a3-87e6-f7ba24f829f2">
+  
+  The synthesized Netlist is present in the results folder and the stats are present in the log folder.
+  
+  <img width="243" alt="Screenshot 2023-06-01 092820" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/4fd12558-0003-4cbe-87fa-149e4035e511">
+  
+  slack report with the custom cell 
+  
+  <img width="542" alt="Screenshot 2023-06-01 092956" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/e6cf1adf-8cf2-4083-88d9-97ec17465e50">
+  
+  <img width="561" alt="Screenshot 2023-06-01 093106" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/92c2f0a2-4d28-4621-8495-0c8cea6bdec1">
+  
+4.Floorplan:
+
 <img width="699" alt="Screenshot 2023-06-01 093534" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c0fe6dd7-7687-481f-ba01-66b0dbad400e">
 <img width="924" alt="Screenshot 2023-06-01 093642" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/40b262a1-fca2-4868-ae1a-df7c381bebd1">
 <img width="922" alt="Screenshot 2023-06-01 093720" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9dd084a9-6cd5-4343-8b50-5ce87fe99540">
@@ -163,8 +189,5 @@ type Magic in the terminal to check whether it is installed or not.
 <img width="913" alt="Screenshot 2023-06-01 120533" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/7009a67f-64d6-4f47-87af-0e0cb948aa5e">
 <img width="928" alt="Screenshot 2023-06-01 120652" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdbb92e1-524a-4fe9-8178-50b1d73a8225">
 <img width="924" alt="Screenshot 2023-06-01 120708" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c2793fe2-c58f-476c-9602-25bd8610b373">
-<img width="464" alt="Screenshot 2023-06-01 092521" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdd119c0-6b92-4e18-a663-10d1bc456f33">
-<img width="463" alt="Screenshot 2023-06-01 092628" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f81acdd0-9dc5-47ea-93a5-f87b73e3e2a0">
-<img width="466" alt="Screenshot 2023-06-01 092704" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/6fd10ac3-39d3-49a3-87e6-f7ba24f829f2">
 <img width="464" alt="Screenshot 2023-06-01 092720" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d67af59b-8514-4c5e-a6c6-e34fe8888bf6">
 
