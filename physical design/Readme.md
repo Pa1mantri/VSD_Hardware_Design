@@ -1,6 +1,12 @@
 
 ## PHYSICAL DESIGN ##
 
+**Introduction to OpenLane flow**
+
+OpenLane is a completely automated RTL to GDSII flow which embeds in it different opensource tools, namely, OpenROAD, Yosys, ABC,etc., apart from many custom methodology scripts for design exploration and optimization. Openlane is built around Skywater 130nm process node and is capable of performing full ASIC implementation steps from RTL all the way down to GDSII. The flow-chart below gives a better picture of openlane flow as a whole
+
+<img width="600" alt="Screenshot 2023-06-01 163017" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d1b98ee7-d286-4187-9e5f-5cc433e90296">
+
 **Overview Of Physical Design Flow**
 
 Place and Route(PnR) is the core of any ASIC implemantation and OpenLane flow integrates into it several key opensource tools which perform each of the respective stages of PnR. Below are the stages and respective tools that are called by OpenLane 
@@ -229,23 +235,20 @@ type Magic in the terminal to check whether it is installed or not.
    
   <img width="913" alt="Screenshot 2023-06-01 120533" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/7009a67f-64d6-4f47-87af-0e0cb948aa5e">
 
+  SkY130_vsdinv cell post routing
+
+  <img width="922" alt="Screenshot 2023-06-02 185131" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/0942d0e1-1c81-43dc-981a-b6d83063dfd7">
   
+  SKY130_vsdinv cell post routing after using the expand command in tkcon window
+  
+  <img width="923" alt="Screenshot 2023-06-02 185225" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/4bd2b486-260d-4965-b4f6-adde1bd15c54">
+
+8.``run_magic`` command is used to generate the GDSII file in the ``results/signoff`` directory.
+
+  <img width="602" alt="Screenshot 2023-06-01 105057" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/39771f44-d05c-4f75-b416-37a0af7326f4">
 
   
+  <img width="695" alt="Screenshot 2023-06-01 105919" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3950ce97-563f-4635-b841-6eed053db555">
   
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-<img width="928" alt="Screenshot 2023-06-01 120652" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdbb92e1-524a-4fe9-8178-50b1d73a8225">
-<img width="924" alt="Screenshot 2023-06-01 120708" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c2793fe2-c58f-476c-9602-25bd8610b373">
-<img width="602" alt="Screenshot 2023-06-01 105057" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/39771f44-d05c-4f75-b416-37a0af7326f4">
-<img width="695" alt="Screenshot 2023-06-01 105919" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3950ce97-563f-4635-b841-6eed053db555">
-<img width="922" alt="Screenshot 2023-06-01 110310" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f104fa39-ae3a-438a-b7dc-4b4e2bcc8738">
+  <img width="922" alt="Screenshot 2023-06-01 110310" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f104fa39-ae3a-438a-b7dc-4b4e2bcc8738">
 
