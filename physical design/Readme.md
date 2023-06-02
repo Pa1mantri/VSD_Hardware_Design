@@ -217,6 +217,20 @@ type Magic in the terminal to check whether it is installed or not.
 
   <img width="462" alt="Screenshot 2023-06-01 100547" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/cfa64247-1b98-451e-bb3c-c32e5ee96d84">
   
+7.Routing: There are two stages of Routing 
+  1.Global Routing   : Routing region is divided into rectangle grids which are represented as course 3D routes (Fastroute tool).
+  2.Detailed Routing : Finer grids and routing guides used to implement physical wiring (TritonRoute tool).
+  
+  <img width="796" alt="Screenshot 2023-06-01 102811" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/79eb4cde-bd24-435e-9655-2b1828eb0fdd">
+
+  The design can be viewed on magic within ``results/routing`` directory by running the following command.
+  
+  ``` magic -T /home/pa1mantri/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def ```
+   
+  <img width="913" alt="Screenshot 2023-06-01 120533" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/7009a67f-64d6-4f47-87af-0e0cb948aa5e">
+
+  
+
   
   
   
@@ -225,11 +239,13 @@ type Magic in the terminal to check whether it is installed or not.
   
   
   
-<img width="796" alt="Screenshot 2023-06-01 102811" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/79eb4cde-bd24-435e-9655-2b1828eb0fdd">
+  
+  
+
+
+<img width="928" alt="Screenshot 2023-06-01 120652" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdbb92e1-524a-4fe9-8178-50b1d73a8225">
+<img width="924" alt="Screenshot 2023-06-01 120708" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c2793fe2-c58f-476c-9602-25bd8610b373">
 <img width="602" alt="Screenshot 2023-06-01 105057" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/39771f44-d05c-4f75-b416-37a0af7326f4">
 <img width="695" alt="Screenshot 2023-06-01 105919" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3950ce97-563f-4635-b841-6eed053db555">
 <img width="922" alt="Screenshot 2023-06-01 110310" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f104fa39-ae3a-438a-b7dc-4b4e2bcc8738">
-<img width="913" alt="Screenshot 2023-06-01 120533" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/7009a67f-64d6-4f47-87af-0e0cb948aa5e">
-<img width="928" alt="Screenshot 2023-06-01 120652" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdbb92e1-524a-4fe9-8178-50b1d73a8225">
-<img width="924" alt="Screenshot 2023-06-01 120708" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c2793fe2-c58f-476c-9602-25bd8610b373">
 
