@@ -169,19 +169,62 @@ type Magic in the terminal to check whether it is installed or not.
   
   <img width="561" alt="Screenshot 2023-06-01 093106" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/92c2f0a2-4d28-4621-8495-0c8cea6bdec1">
   
-4.Floorplan:
+4.Floorplan: ```run_floorplan```
 
-<img width="699" alt="Screenshot 2023-06-01 093534" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c0fe6dd7-7687-481f-ba01-66b0dbad400e">
-<img width="924" alt="Screenshot 2023-06-01 093642" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/40b262a1-fca2-4868-ae1a-df7c381bebd1">
-<img width="922" alt="Screenshot 2023-06-01 093720" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9dd084a9-6cd5-4343-8b50-5ce87fe99540">
-<img width="753" alt="Screenshot 2023-06-01 093833" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/97fdb09f-35a6-4ae9-9fb1-6dc6b3a0b81a">
-<img width="662" alt="Screenshot 2023-06-01 093905" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/1a17d3fb-58a4-472a-a050-698a608ba768">
-<img width="465" alt="Screenshot 2023-06-01 094209" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9de8acde-9039-4ea6-8c7f-99dec2d106a4">
-<img width="663" alt="Screenshot 2023-06-01 094353" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/543f34f8-ef50-4afc-aec0-2381de1a5415">
-<img width="924" alt="Screenshot 2023-06-01 100109" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d2649faf-298f-451d-a18e-b260aa03f5c4">
-<img width="924" alt="Screenshot 2023-06-01 100135" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9666d311-3c0a-4a6d-9da5-ce31f16708d7">
-<img width="374" alt="Screenshot 2023-06-01 100215" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/584291a1-2d95-4bd1-a3f3-5cc889242119">
-<img width="462" alt="Screenshot 2023-06-01 100547" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/cfa64247-1b98-451e-bb3c-c32e5ee96d84">
+  <img width="464" alt="Screenshot 2023-06-01 092720" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d67af59b-8514-4c5e-a6c6-e34fe8888bf6">
+
+  Post the floorplan, a ```.def``` file is created in the results folder. We can review the code for floorplan in the ```floorplan.tcl``` file present in the                 ```scripts/tcl_commands``` folder. All the switches with which we can ammend the floorplan process can be found in ```floorplan.tcl``` file present in the                   ```configuration/floorplan.tcl``` folder.
+  
+  To view the floorplan use the magic tool with the following command.
+  
+  ``` magic -T /home/pa1mantri/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def ```
+  
+  <img width="699" alt="Screenshot 2023-06-01 093534" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c0fe6dd7-7687-481f-ba01-66b0dbad400e">
+
+  All the standard cells are found at the corner of the chip, whcih will be placed at the placement stage. PDN(power distribution network) also happens at this stage with     rails,straps and rings in the chip.
+  
+  <img width="662" alt="Screenshot 2023-06-01 093905" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/1a17d3fb-58a4-472a-a050-698a608ba768">
+
+  <img width="922" alt="Screenshot 2023-06-01 093720" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9dd084a9-6cd5-4343-8b50-5ce87fe99540">
+
+5.Placement: The synthesized netlist is to be placed on the floorplan. Placement happens in two steps
+  
+  Global Placement: It finds optimal position for all cells which may not be legal and cells may overlap. Optimization is done through reduction of half parameter wire       length.
+  
+  Detailed Placement:  It alters the position of cells post global placement so as to legalise them.
+  
+  <img width="465" alt="Screenshot 2023-06-01 094209" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9de8acde-9039-4ea6-8c7f-99dec2d106a4">
+  
+  After the placement, the results can be viewed on magic within Results/placement directory with the following command
+  
+  ``` magic -T /home/pa1mantri/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def ```
+  
+  <img width="663" alt="Screenshot 2023-06-01 094353" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/543f34f8-ef50-4afc-aec0-2381de1a5415">
+
+  SKY130_vsdinv cell post placement
+
+  <img width="924" alt="Screenshot 2023-06-01 100109" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d2649faf-298f-451d-a18e-b260aa03f5c4">
+  
+  after using expand command in the tkcon window:
+  
+  <img width="924" alt="Screenshot 2023-06-01 100135" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/9666d311-3c0a-4a6d-9da5-ce31f16708d7">
+  
+  <img width="374" alt="Screenshot 2023-06-01 100215" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/584291a1-2d95-4bd1-a3f3-5cc889242119">
+  
+6.Clock Tree Synthesis
+
+  The purpose of building a clock tree is enable the clock input to reach every element and to ensure a zero clock skew. H-tree is a common methodology followed in CTS.       Before attempting a CTS run in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement           techniques. Therefore, the verilog file needs to be modified using the write_verilog command. Then, the synthesis, floorplan and placement is run again. To run the cts c   command is ```run_cts```
+
+  <img width="462" alt="Screenshot 2023-06-01 100547" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/cfa64247-1b98-451e-bb3c-c32e5ee96d84">
+  
+  
+  
+  
+  
+  
+  
+  
+  
 <img width="796" alt="Screenshot 2023-06-01 102811" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/79eb4cde-bd24-435e-9655-2b1828eb0fdd">
 <img width="602" alt="Screenshot 2023-06-01 105057" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/39771f44-d05c-4f75-b416-37a0af7326f4">
 <img width="695" alt="Screenshot 2023-06-01 105919" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3950ce97-563f-4635-b841-6eed053db555">
@@ -189,5 +232,4 @@ type Magic in the terminal to check whether it is installed or not.
 <img width="913" alt="Screenshot 2023-06-01 120533" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/7009a67f-64d6-4f47-87af-0e0cb948aa5e">
 <img width="928" alt="Screenshot 2023-06-01 120652" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/fdbb92e1-524a-4fe9-8178-50b1d73a8225">
 <img width="924" alt="Screenshot 2023-06-01 120708" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c2793fe2-c58f-476c-9602-25bd8610b373">
-<img width="464" alt="Screenshot 2023-06-01 092720" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d67af59b-8514-4c5e-a6c6-e34fe8888bf6">
 
