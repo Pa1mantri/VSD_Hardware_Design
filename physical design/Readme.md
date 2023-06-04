@@ -186,6 +186,11 @@ type Magic in the terminal to check whether it is installed or not.
   ``` magic -T /home/pa1mantri/.volare/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.nom.lef def read picorv32.def ```
   
   <img width="699" alt="Screenshot 2023-06-01 093534" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/c0fe6dd7-7687-481f-ba01-66b0dbad400e">
+  
+  Die-Area post Floorplan
+  
+  <img width="606" alt="Screenshot 2023-06-02 194834" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3652eb67-303e-4e7c-b878-76b862e69cd4">
+
 
   All the standard cells are found at the corner of the chip, whcih will be placed at the placement stage. PDN(power distribution network) also happens at this stage with     rails,straps and rings in the chip.
   
@@ -217,11 +222,47 @@ type Magic in the terminal to check whether it is installed or not.
   
   <img width="374" alt="Screenshot 2023-06-01 100215" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/584291a1-2d95-4bd1-a3f3-5cc889242119">
   
+  Area post Placement
+  
+  <img width="383" alt="Screenshot 2023-06-02 194945" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/55d88eb3-d621-4306-a749-6940cfcf0a95">
+  
+  resizing_sta report post placement
+  
+  <img width="443" alt="Screenshot 2023-06-02 195949" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/8b43080b-560d-4b84-b24c-48c0e7afdf52">
+  
+  
+  <img width="435" alt="Screenshot 2023-06-02 200410" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/98e7cb4e-342a-4bff-be64-69c204fefedc">
+  
+  slack report post placement
+  
+  <img width="404" alt="Screenshot 2023-06-02 200807" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/0dab252f-f7a5-43fe-8aa5-115399f1d9b5">
+
+  
 6.Clock Tree Synthesis
 
   The purpose of building a clock tree is enable the clock input to reach every element and to ensure a zero clock skew. H-tree is a common methodology followed in CTS.       Before attempting a CTS run in TritonCTS tool, if the slack was attempted to be reduced in previous run, the netlist may have gotten modified by cell replacement           techniques. Therefore, the verilog file needs to be modified using the write_verilog command. Then, the synthesis, floorplan and placement is run again. To run the cts c   command is ```run_cts```
 
   <img width="462" alt="Screenshot 2023-06-01 100547" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/cfa64247-1b98-451e-bb3c-c32e5ee96d84">
+  
+  slack report post CTS
+  
+  <img width="418" alt="Screenshot 2023-06-04 070636" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/ccffcbc8-36c1-4dc1-85cc-ccab36a74258">
+  
+  Power report post CTS
+  
+  <img width="381" alt="Screenshot 2023-06-04 070529" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/e5c173b7-0788-4d83-a032-fba89aaa015c">
+
+  Skew Report post CTS
+  
+  <img width="399" alt="Screenshot 2023-06-04 070604" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d6d53f44-25cf-4659-b459-80336b9284a4">
+  
+  Sta report post cts
+  
+  <img width="436" alt="Screenshot 2023-06-04 071115" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/69d6cd5b-1055-4f8c-a8e0-18487efd7bb7">
+  
+  <img width="394" alt="Screenshot 2023-06-04 071126" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/0092f873-f329-48bf-b401-644f2e1543f1">
+  
+  
   
 7.Routing: There are two stages of Routing 
   1.Global Routing   : Routing region is divided into rectangle grids which are represented as course 3D routes (Fastroute tool).
@@ -242,12 +283,21 @@ type Magic in the terminal to check whether it is installed or not.
   SKY130_vsdinv cell post routing after using the expand command in tkcon window
   
   <img width="923" alt="Screenshot 2023-06-02 185225" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/4bd2b486-260d-4965-b4f6-adde1bd15c54">
+  
+  Congestion Report post routing
+  
+  <img width="430" alt="Screenshot 2023-06-04 072055" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3f010157-42ea-44f4-909f-ac3009ccf276">
+
+  slack report post routing
+  
+  <img width="381" alt="Screenshot 2023-06-04 072156" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d97d8f5d-e4ed-4d60-a000-41e93d4cfd56">
+
 
 8.``run_magic`` command is used to generate the GDSII file in the ``results/signoff`` directory.
 
   <img width="602" alt="Screenshot 2023-06-01 105057" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/39771f44-d05c-4f75-b416-37a0af7326f4">
-
-  
+   
+     
   <img width="695" alt="Screenshot 2023-06-01 105919" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3950ce97-563f-4635-b841-6eed053db555">
   
   <img width="922" alt="Screenshot 2023-06-01 110310" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f104fa39-ae3a-438a-b7dc-4b4e2bcc8738">
