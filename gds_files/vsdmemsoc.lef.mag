@@ -1,0 +1,289 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1686812073
+<< obsli1 >>
+rect 1104 2159 218868 137649
+<< obsm1 >>
+rect 1104 2128 218868 137680
+<< metal2 >>
+rect 10966 139200 11022 140000
+rect 32954 139200 33010 140000
+rect 54942 139200 54998 140000
+rect 76930 139200 76986 140000
+rect 98918 139200 98974 140000
+rect 120906 139200 120962 140000
+rect 142894 139200 142950 140000
+rect 164882 139200 164938 140000
+rect 186870 139200 186926 140000
+rect 208858 139200 208914 140000
+rect 3974 0 4030 800
+rect 10598 0 10654 800
+rect 17222 0 17278 800
+rect 23846 0 23902 800
+rect 30470 0 30526 800
+rect 37094 0 37150 800
+rect 43718 0 43774 800
+rect 50342 0 50398 800
+rect 56966 0 57022 800
+rect 63590 0 63646 800
+rect 70214 0 70270 800
+rect 76838 0 76894 800
+rect 83462 0 83518 800
+rect 90086 0 90142 800
+rect 96710 0 96766 800
+rect 103334 0 103390 800
+rect 109958 0 110014 800
+rect 116582 0 116638 800
+rect 123206 0 123262 800
+rect 129830 0 129886 800
+rect 136454 0 136510 800
+rect 143078 0 143134 800
+rect 149702 0 149758 800
+rect 156326 0 156382 800
+rect 162950 0 163006 800
+rect 169574 0 169630 800
+rect 176198 0 176254 800
+rect 182822 0 182878 800
+rect 189446 0 189502 800
+rect 196070 0 196126 800
+rect 202694 0 202750 800
+rect 209318 0 209374 800
+rect 215942 0 215998 800
+<< obsm2 >>
+rect 38672 16323 203098 97226
+<< metal3 >>
+rect 0 132200 800 132320
+rect 0 118328 800 118448
+rect 0 104456 800 104576
+rect 0 90584 800 90704
+rect 0 76712 800 76832
+rect 0 62840 800 62960
+rect 0 48968 800 49088
+rect 0 35096 800 35216
+rect 0 21224 800 21344
+rect 0 7352 800 7472
+<< obsm3 >>
+rect 4062 16293 204676 98724
+<< metal4 >>
+rect 4208 2128 4528 137680
+rect 4868 2128 5188 137680
+rect 34928 2128 35248 137680
+rect 35588 2128 35908 137680
+rect 65648 2128 65968 137680
+rect 66308 2128 66628 137680
+rect 96368 2128 96688 137680
+rect 97028 2128 97348 137680
+rect 127088 100720 127408 137680
+rect 127748 100720 128068 137680
+rect 157808 100844 158128 137680
+rect 158468 100720 158788 137680
+rect 188528 100720 188848 137680
+rect 189188 100720 189508 137680
+rect 127088 2128 127408 16004
+rect 127748 2128 128068 15880
+rect 157808 2128 158128 15880
+rect 158468 2128 158788 15880
+rect 188528 2128 188848 16004
+rect 189188 2128 189508 16004
+rect 212268 15184 212588 101776
+rect 213004 15184 213324 101776
+<< obsm4 >>
+rect 21820 16199 34848 98724
+rect 35328 16199 35508 98724
+rect 35988 16199 65568 98724
+rect 66048 16199 66228 98724
+rect 66708 16199 96288 98724
+rect 96768 16199 96948 98724
+rect 97428 16199 204676 98724
+<< metal5 >>
+rect 1056 128550 218916 128870
+rect 1056 127890 218916 128210
+rect 1056 97914 218916 98234
+rect 1056 97254 218916 97574
+rect 1056 67278 218916 67598
+rect 1056 66618 218916 66938
+rect 1056 36642 218916 36962
+rect 1056 35982 218916 36302
+rect 1056 6006 218916 6326
+rect 1056 5346 218916 5666
+<< labels >>
+rlabel metal2 s 3974 0 4030 800 6 CLK
+port 1 nsew
+rlabel metal2 s 10966 139200 11022 140000 6 OUT[0]
+port 2 nsew
+rlabel metal2 s 32954 139200 33010 140000 6 OUT[1]
+port 3 nsew
+rlabel metal2 s 54942 139200 54998 140000 6 OUT[2]
+port 4 nsew
+rlabel metal2 s 76930 139200 76986 140000 6 OUT[3]
+port 5 nsew
+rlabel metal2 s 98918 139200 98974 140000 6 OUT[4]
+port 6 nsew
+rlabel metal2 s 120906 139200 120962 140000 6 OUT[5]
+port 7 nsew
+rlabel metal2 s 142894 139200 142950 140000 6 OUT[6]
+port 8 nsew
+rlabel metal2 s 164882 139200 164938 140000 6 OUT[7]
+port 9 nsew
+rlabel metal2 s 186870 139200 186926 140000 6 OUT[8]
+port 10 nsew
+rlabel metal2 s 208858 139200 208914 140000 6 OUT[9]
+port 11 nsew
+rlabel metal3 s 0 35096 800 35216 6 init_addr[0]
+port 12 nsew
+rlabel metal3 s 0 48968 800 49088 6 init_addr[1]
+port 13 nsew
+rlabel metal3 s 0 62840 800 62960 6 init_addr[2]
+port 14 nsew
+rlabel metal3 s 0 76712 800 76832 6 init_addr[3]
+port 15 nsew
+rlabel metal3 s 0 90584 800 90704 6 init_addr[4]
+port 16 nsew
+rlabel metal3 s 0 104456 800 104576 6 init_addr[5]
+port 17 nsew
+rlabel metal3 s 0 118328 800 118448 6 init_addr[6]
+port 18 nsew
+rlabel metal3 s 0 132200 800 132320 6 init_addr[7]
+port 19 nsew
+rlabel metal2 s 10598 0 10654 800 6 init_data[0]
+port 20 nsew
+rlabel metal2 s 76838 0 76894 800 6 init_data[10]
+port 21 nsew
+rlabel metal2 s 83462 0 83518 800 6 init_data[11]
+port 22 nsew
+rlabel metal2 s 90086 0 90142 800 6 init_data[12]
+port 23 nsew
+rlabel metal2 s 96710 0 96766 800 6 init_data[13]
+port 24 nsew
+rlabel metal2 s 103334 0 103390 800 6 init_data[14]
+port 25 nsew
+rlabel metal2 s 109958 0 110014 800 6 init_data[15]
+port 26 nsew
+rlabel metal2 s 116582 0 116638 800 6 init_data[16]
+port 27 nsew
+rlabel metal2 s 123206 0 123262 800 6 init_data[17]
+port 28 nsew
+rlabel metal2 s 129830 0 129886 800 6 init_data[18]
+port 29 nsew
+rlabel metal2 s 136454 0 136510 800 6 init_data[19]
+port 30 nsew
+rlabel metal2 s 17222 0 17278 800 6 init_data[1]
+port 31 nsew
+rlabel metal2 s 143078 0 143134 800 6 init_data[20]
+port 32 nsew
+rlabel metal2 s 149702 0 149758 800 6 init_data[21]
+port 33 nsew
+rlabel metal2 s 156326 0 156382 800 6 init_data[22]
+port 34 nsew
+rlabel metal2 s 162950 0 163006 800 6 init_data[23]
+port 35 nsew
+rlabel metal2 s 169574 0 169630 800 6 init_data[24]
+port 36 nsew
+rlabel metal2 s 176198 0 176254 800 6 init_data[25]
+port 37 nsew
+rlabel metal2 s 182822 0 182878 800 6 init_data[26]
+port 38 nsew
+rlabel metal2 s 189446 0 189502 800 6 init_data[27]
+port 39 nsew
+rlabel metal2 s 196070 0 196126 800 6 init_data[28]
+port 40 nsew
+rlabel metal2 s 202694 0 202750 800 6 init_data[29]
+port 41 nsew
+rlabel metal2 s 23846 0 23902 800 6 init_data[2]
+port 42 nsew
+rlabel metal2 s 209318 0 209374 800 6 init_data[30]
+port 43 nsew
+rlabel metal2 s 215942 0 215998 800 6 init_data[31]
+port 44 nsew
+rlabel metal2 s 30470 0 30526 800 6 init_data[3]
+port 45 nsew
+rlabel metal2 s 37094 0 37150 800 6 init_data[4]
+port 46 nsew
+rlabel metal2 s 43718 0 43774 800 6 init_data[5]
+port 47 nsew
+rlabel metal2 s 50342 0 50398 800 6 init_data[6]
+port 48 nsew
+rlabel metal2 s 56966 0 57022 800 6 init_data[7]
+port 49 nsew
+rlabel metal2 s 63590 0 63646 800 6 init_data[8]
+port 50 nsew
+rlabel metal2 s 70214 0 70270 800 6 init_data[9]
+port 51 nsew
+rlabel metal3 s 0 21224 800 21344 6 init_en
+port 52 nsew
+rlabel metal3 s 0 7352 800 7472 6 reset
+port 53 nsew
+rlabel metal5 s 1056 97254 218916 97574 6 vccd1
+port 54 nsew
+rlabel metal4 s 212268 15184 212588 101776 6 vccd1
+port 54 nsew
+rlabel metal5 s 1056 127890 218916 128210 6 vccd1
+port 54 nsew
+rlabel metal5 s 1056 66618 218916 66938 6 vccd1
+port 54 nsew
+rlabel metal5 s 1056 35982 218916 36302 6 vccd1
+port 54 nsew
+rlabel metal5 s 1056 5346 218916 5666 6 vccd1
+port 54 nsew
+rlabel metal4 s 188528 100720 188848 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 188528 2128 188848 16004 6 vccd1
+port 54 nsew
+rlabel metal4 s 157808 100844 158128 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 157808 2128 158128 15880 6 vccd1
+port 54 nsew
+rlabel metal4 s 127088 100720 127408 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 127088 2128 127408 16004 6 vccd1
+port 54 nsew
+rlabel metal4 s 96368 2128 96688 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 65648 2128 65968 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 34928 2128 35248 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 4208 2128 4528 137680 6 vccd1
+port 54 nsew
+rlabel metal4 s 213004 15184 213324 101776 6 vssd1
+port 55 nsew
+rlabel metal5 s 1056 128550 218916 128870 6 vssd1
+port 55 nsew
+rlabel metal5 s 1056 97914 218916 98234 6 vssd1
+port 55 nsew
+rlabel metal5 s 1056 67278 218916 67598 6 vssd1
+port 55 nsew
+rlabel metal5 s 1056 36642 218916 36962 6 vssd1
+port 55 nsew
+rlabel metal5 s 1056 6006 218916 6326 6 vssd1
+port 55 nsew
+rlabel metal4 s 189188 100720 189508 137680 6 vssd1
+port 55 nsew
+rlabel metal4 s 189188 2128 189508 16004 6 vssd1
+port 55 nsew
+rlabel metal4 s 158468 100720 158788 137680 6 vssd1
+port 55 nsew
+rlabel metal4 s 158468 2128 158788 15880 6 vssd1
+port 55 nsew
+rlabel metal4 s 127748 100720 128068 137680 6 vssd1
+port 55 nsew
+rlabel metal4 s 127748 2128 128068 15880 6 vssd1
+port 55 nsew
+rlabel metal4 s 97028 2128 97348 137680 6 vssd1
+port 55 nsew
+rlabel metal4 s 35588 2128 35908 137680 6 vssd1
+port 55 nsew
+rlabel metal4 s 4868 2128 5188 137680 6 vssd1
+port 55 nsew
+rlabel metal4 s 66308 2128 66628 137680 6 _01562_
+port 56 nsew
+<< properties >>
+string FIXED_BBOX 0 0 220000 140000
+string LEFclass BLOCK
+string LEFview TRUE
+string GDS_END 14107486
+string GDS_FILE /openlane/designs/vsdmemsoc/runs/RUN_2023.06.15_05.35.25/results/signoff/vsdmemsoc.magic.gds
+string GDS_START 9271382
+<< end >>
+
