@@ -53,3 +53,11 @@ add_lefs -src $lefs
   - Streaming out the final GDSII layout file from the routed def (Magic).
 
 
+<img width="925" alt="Screenshot 2023-10-07 065706" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/33991a2e-69c4-4c01-b5cc-38a125a27f4c">
+<img width="925" alt="Screenshot 2023-10-07 065730" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/d1f2cc5c-3085-4df8-ab3f-2e908c710f1f">
+<img width="928" alt="Screenshot 2023-10-07 064539" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/caa5ae33-1a92-4cf6-a5d3-132a17fb7e7d">
+<img width="925" alt="Screenshot 2023-10-07 064556" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/589d6289-dfb7-4a4c-a5c6-eef4c5aaf1c3">
+<img width="925" alt="Screenshot 2023-10-07 064937" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/8f0ea4f0-6399-4dcd-81f9-8e4e2665ee7d">
+<img width="917" alt="Screenshot 2023-10-07 064951" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/4641aecb-ad63-473a-97e1-73ee0af1c027">
+<img width="927" alt="Screenshot 2023-10-07 065638" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/57caab78-6e69-49c7-bc93-164ae45701a0">
+
