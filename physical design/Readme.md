@@ -1,6 +1,8 @@
 
 ## PHYSICAL DESIGN ##
 
+This repository contains all the information needed to build and run openlane flow, which has the capability to perform full ASIC implementation steps from RTL to GDSII. In addition, it also contains procedures on how to create a custom LEF file and plugging it into an openlane flow
+
 **Introduction to OpenLane flow**
 
 OpenLane is a completely automated RTL to GDSII flow which embeds in it different opensource tools, namely, OpenROAD, Yosys, ABC,etc., apart from many custom methodology scripts for design exploration and optimization. Openlane is built around Skywater 130nm process node and is capable of performing full ASIC implementation steps from RTL all the way down to GDSII. The flow-chart below gives a better picture of openlane flow as a whole
@@ -300,5 +302,4 @@ type Magic in the terminal to check whether it is installed or not.
      
   <img width="695" alt="Screenshot 2023-06-01 105919" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/3950ce97-563f-4635-b841-6eed053db555">
   
-  <img width="922" alt="Screenshot 2023-06-01 110310" src="https://github.com/Pa1mantri/vsd_hardware_design/assets/114488271/f104fa39-ae3a-438a-b7dc-4b4e2bcc8738">
-
+  
