@@ -324,7 +324,7 @@ show multiple_modules
 
 Instead of or and and gates it shows the instances u1 and u2 while preserving the hierarchy. This is called the hierarchical design.
 
-Instead of or, and the circuit is implemented using nand and inverter gates. We always prefer stacked NMOS's(nand gates)to stacked the PMOS's(nor cascaded with inverter for or). Because pmos has a very poor mobility and therefore they have to be made quite wide to obtain a good logical effort.
+Instead of or, and the circuit is implemented using nand and inverter gates. We always prefer stacked NMOS's(nand gates)to stacked the PMOS's(nor cascaded with inverter for or). Because pmos has a very poor mobility and therefore they have to be made quite wide to obtain a good logical effort. Logical effort  quantifies how much "harder" it is for a particular gate to drive a load compared to a standard inverter.
 When we use flatten to generate a flat netlist. Here there are no instances of U1 and U2 and hierarchy is not present.
 
 <img width="867" alt="heirarchial_flat-4" src="https://user-images.githubusercontent.com/114488271/205282772-ee1865e1-dd2c-410a-acac-ebc2eef0c1dc.png">
