@@ -921,9 +921,9 @@ The above code has good readabilty,scalability and easy to write as well. Let's 
 <img width="806" alt="Screenshot_20221205_041550" src="https://user-images.githubusercontent.com/114488271/206408300-6cb2d99c-e9f9-41d6-b729-67e0f00f92b5.png">
 
 
-**for generate**
+**for generate (genvar variable)**
 
-FOR Generate is used when we needto create multiple instances of the same hardware. We must use the For generate outside the always block.
+``FOR Generate is used when we needto create multiple instances of the same hardware.``  We must use the For generate outside the always block.
 
 We take example of a 8 bit Ripple Carry Adder(RCA) to understand the ease of instantiations provided by the For generate statement. An RCA consists of Full Adders tied in series where the carry out of the previous full adder is fed as the carry in bit of the next full adder in the chain. Hence, we can make use of generate for to instantiate every full adder in the design , as they are all represent the same hardware.
 
